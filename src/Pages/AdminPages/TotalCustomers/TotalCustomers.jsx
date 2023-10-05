@@ -3,10 +3,12 @@ import "./TotalCustomers.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateForm from "../UpdateForm/UpdateForm";
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import PopMessage from "../../../components/PopMessage/PopMessage";
 
 const TotalCustomers = () => {
   const [editSection, setEditSection] = useState(false);
-
+  const [message, setMessage] = useState("");
+  const [popmsg, setPopmsg] = useState(false);
   // Confirm-Delete
   const [seen, setSeen] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
@@ -48,7 +50,8 @@ const TotalCustomers = () => {
         }
       );
       if (response.status === 200) {
-        alert("Data Updated");
+        setMessage("Data Updated")
+        setPopmsg(true)
         setEditSection(false);
         getUsers();
         console.log(formData)
@@ -81,7 +84,15 @@ const TotalCustomers = () => {
 
   return (
     <>
-    {/* Edit Section */}
+    
+      {popmsg ? (
+      <PopMessage 
+      message={message}
+      handleClose={() => setPopmsg(false)}
+      />) : null}
+
+
+      {/* Edit Section */}
       {editSection && (
         <UpdateForm
           handleSubmit={handleUpdate}
@@ -89,16 +100,17 @@ const TotalCustomers = () => {
           handleClose={() => setEditSection(false)}
           rest={formData}
         />
-      )}      
+      )}
       {/* Confirm Delete */}
-      {
-        seen ? (
+      {seen ? (
         <div className="confirm-delete">
-          <h1>Are you sure?</h1><br/><br />
+          <h1>Are you sure?</h1>
+          <br />
+          <br />
           <button onClick={handleDeletePop}>Yes</button>
-          <button onClick={()=>setSeen(false)}>No</button>
+          <button onClick={() => setSeen(false)}>No</button>
         </div>
-        ) : null}
+      ) : null}
       <div className="total-customer-table">
         <div className="table">
           <table>
@@ -112,7 +124,7 @@ const TotalCustomers = () => {
                 <th>End Date</th>
                 <th>Paid</th>
                 <th>Balance</th>
-                <th style={{width:"8rem"}}>Action</th>
+                <th style={{ width: "8rem" }}>Action</th>
               </tr>
             </thead>
             {users[0] ? (
@@ -135,10 +147,12 @@ const TotalCustomers = () => {
                             handleEdit(key);
                           }}
                         />
-                        <DeleteIcon onClick={()=>{
-                          setSeen(true)
-                          setDeleteItemId(key._id)}
-                          }/>
+                        <DeleteIcon
+                          onClick={() => {
+                            setSeen(true);
+                            setDeleteItemId(key._id);
+                          }}
+                        />
                       </div>
                     </td>
                   </tr>

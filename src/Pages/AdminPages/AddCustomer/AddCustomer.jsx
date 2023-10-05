@@ -1,10 +1,12 @@
 import {React,useState} from "react";
 import "./AddCustomer.css";
 import axios from "axios";
+import PopMessage from "../../../components/PopMessage/PopMessage";
 axios.defaults.baseURl = "http://localhost:8080/"
 
 const AddCustomer= () => {
-
+  const [message, setMessage] = useState("");
+  const [popmsg, setPopmsg] = useState(false);
     const [form,setForm] = useState({})
     const handleForm = (e) => {
       const input = e.target;
@@ -37,16 +39,25 @@ const AddCustomer= () => {
       })
       if(response.status === 200){
         console.log(response);
-        alert("Member Successfully added.");
+        setMessage("Member Successfully added.");
+        setPopmsg(true);
+        // alert("Member Successfully added.");
     }
     }
     catch(error){
-      alert("Something Went Wrong!");
+      setMessage("Something Went Wrong!");
+      setPopmsg(true);
+      // alert("Something Went Wrong!");
       console.log(error)
     }
   }
 
-  return (
+  return (<>
+    {popmsg ? (
+      <PopMessage 
+      message={message}
+      handleClose={() => setPopmsg(false)}
+      />) : null}
     <div className="add-customer-form">
       <h1 style={{ textAlign: "center" }}>Member Registration Form</h1>
       <br />
@@ -214,6 +225,7 @@ const AddCustomer= () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 
