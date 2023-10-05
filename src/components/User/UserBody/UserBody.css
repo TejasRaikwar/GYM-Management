@@ -1,0 +1,58 @@
+.user-body{
+      min-height: 100vh;
+}
+.user-info,.user-joining-info,.user-total{
+    margin: auto;
+    height: auto;
+    width: 90%;
+    border: 2px solid white;
+    border-radius: 5px;
+    display: flex;
+    background-color:#454b50;
+}
+.user-info{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.user-info-left{
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        align-content: center;
+}
+.user-info-right{
+    width: 85%;
+    margin: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.user-info-right>div{
+    width: 27%;
+    padding: 5px;
+    margin: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px;
+}
+.user-info-left>img{
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    border-radius: 50%;
+}.user-joining-info>table{
+    width: 99%;
+}
+
+.user-joining-info>table{
+    /* text-align: center; */
+    /* display: flex; */
+    /* justify-content: space-around; */
+}
+
+.user-joining-info>table>tr>td,.user-total>table>tr>td{
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
