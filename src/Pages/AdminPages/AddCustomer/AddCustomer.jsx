@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from "react";
+import {React,useState} from "react";
 import "./AddCustomer.css";
 import axios from "axios";
 axios.defaults.baseURl = "http://localhost:8080/"
@@ -6,14 +6,6 @@ axios.defaults.baseURl = "http://localhost:8080/"
 const AddCustomer= () => {
 
     const [form,setForm] = useState({})
-    // const handleForm = (e) =>{
-    //    setForm({
-    //     ...form,
-    //     [e.target.name] : e.target.value
-    //   })
-    // }
-
-    // -------------
     const handleForm = (e) => {
       const input = e.target;
       const name = input.name;
@@ -43,7 +35,6 @@ const AddCustomer= () => {
           'Content-Type':"application/json",
         }
       })
-      const data = await response.json();
       if(response.status === 200){
         console.log(response);
         alert("Member Successfully added.");

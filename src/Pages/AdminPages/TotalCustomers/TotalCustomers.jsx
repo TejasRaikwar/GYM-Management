@@ -34,14 +34,6 @@ const TotalCustomers = () => {
       getUsers();
     }
   };
-
-  const [editFormData, setEditFormData] = useState({});
-  const handleEditFormData = (e) => {
-    setEditFormData({
-      ...editFormData,
-      [e.target.name]: e.target.value,
-    });
-  };
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
