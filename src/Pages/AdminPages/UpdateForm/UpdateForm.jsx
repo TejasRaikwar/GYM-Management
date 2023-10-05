@@ -19,7 +19,7 @@ const UpdateForm = ({handleSubmit,handleForm,handleClose,rest}) => {
   },[jdate])
 
   // End Date
-  const[edate,setEDate] = useState(new Date(rest.JoinDate))
+  const[edate,setEDate] = useState(new Date(rest.EndDate))
   useEffect(() =>{
     const enddate = document.getElementById('enddate')
     enddate.valueAsDate=edate;
