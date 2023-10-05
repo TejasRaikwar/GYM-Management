@@ -2,10 +2,10 @@ import React from 'react';
 import './Footer.css';
 import Instagram from '../../assets/instagram.png';
 import Facebook from '../../assets/facebook.png';
-import Logo from '../../assets/logo2.png'
-import Logo4 from '../../assets/logo4.png'
+// import Logo from '../../assets/logo2.png'
+// import Logo4 from '../../assets/logo4.png'
 import Logo2 from '../../assets/logo2.png'
-import Logo3 from '../../assets/logo3.png'
+// import Logo3 from '../../assets/logo3.png'
 
 const Footer = () => {
   return (
