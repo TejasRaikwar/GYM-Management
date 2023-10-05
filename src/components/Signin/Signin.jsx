@@ -8,8 +8,7 @@ const Signin = (props) => {
     mobile: "",
     password: "",
   });
-  // let Warning = "";
-  const [warning, setWarning] = useState("")
+  const [warning,setWarning] = useState("");
   const handleLogin = async (e) => {
     e.preventDefault();
     const { mobile, password } = value;
@@ -37,19 +36,19 @@ const Signin = (props) => {
           navigate("/user");
         } else {
           console.error("Invalid user role:", userRole);
-          alert("Login failed. Invalid credentials.");
+          setWarning("Login failed. Invalid credentials.")
         }
       } else {
         // Handle various error cases
         if (response.status === 401) {
-          alert("Token is missing. Please try again.");
+          setWarning("Token is missing. Please try again.")
         } else {
-          alert(data.message || "An error occurred while logging in.");
+          setWarning(data.message || "An error occurred while logging in.");
         }
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred while logging in.");
+      setWarning("An error occurred while logging in.");
     }
   };
   
@@ -66,9 +65,7 @@ const Signin = (props) => {
                 name="emailip"
                 min="0"
                 max="9999999999"
-                onChange={(e) =>
-                  setValue({ ...value, mobile: e.target.value })
-                }
+                onChange={(e) => setValue({ ...value, mobile: e.target.value })}
               />
             </div>
             <div className="input-field">
@@ -94,7 +91,11 @@ const Signin = (props) => {
             <button onClick={props.toggle}>Close</button>
           </div>
         </form>
-      <h5 style={{color:"red",textAlign:"left", margin:0, marginTop:"10px"}}>Test warning</h5>
+        {warning ? (
+          <h4 style={{ color: "red", textAlign: "left", marginTop: "1rem" }}>
+            {warning}
+          </h4>):null
+        }
       </div>
     </div>
   );
