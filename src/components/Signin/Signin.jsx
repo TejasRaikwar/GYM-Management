@@ -8,7 +8,8 @@ const Signin = (props) => {
     mobile: "",
     password: "",
   });
-
+  // let Warning = "";
+  const [warning, setWarning] = useState("")
   const handleLogin = async (e) => {
     e.preventDefault();
     const { mobile, password } = value;
@@ -93,6 +94,7 @@ const Signin = (props) => {
             <button onClick={props.toggle}>Close</button>
           </div>
         </form>
+      <h5 style={{color:"red",textAlign:"left", margin:0, marginTop:"10px"}}>Test warning</h5>
       </div>
     </div>
   );

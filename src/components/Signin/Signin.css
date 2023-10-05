@@ -1,72 +1,3 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.signinpage{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-.container{
-    align-self: center;
-    width: 90%;
-    max-width: 450px;
-    top: 50%;
-    left: 50%;
-    background-color: gray;
-    padding: 50px 60px 70px;
-    text-align: center;
-    border-radius: 2px;
-}
-
-.container h1{
-    font-size: 30px;
-    color: white;
-    position: relative;
-}
-.input-field{
-    background: #eaeaea;
-    margin: 15px 0;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    max-height: 65px;
-    transition: max-height 0.5s;
-    overflow: hidden;
-}
-input{
-    width: 100%;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    padding: 18px 15px;
-}
-.submit{
-    font-size: large;
-    font-weight: 600;
-    position: center;
-    width: 100%;
-    background: var(--appColor);
-    color: white;
-    height: 40px;
-    border-radius: 20px;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: home4 1s;
-   
-}
-input::placeholder { 
-    color:var(--appColor);
-  } */
-
-
-
-  /*------------ For Popup -------------*/
-
-
   .signinpage{
     position: fixed;
     z-index: 1;
@@ -99,10 +30,7 @@ input::placeholder {
     color: black;
     position: relative;
 }
-/* .container,.inner-group {
-    display: block;
-    margin-bottom: 10px;
-} */
+
 .input-field{
     background: #eaeaea;
     margin: 15px 0;
