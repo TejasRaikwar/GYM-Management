@@ -1,5 +1,6 @@
 .user-backgroud{
-    height: 100vh;
+    color: white;
+    padding: 1rem;
 }
 .user-body {
     border: 2px solid white;
@@ -10,24 +11,39 @@
     justify-content: space-between;
     row-gap: 10px;
 }
-
-.box {
-    border: 1px solid red;
+.name-box{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* border: 1px solid red; */
     width: calc(25% - 10px); /* Set initial width for 4 columns with 10px gap */
     height: 14vh;
     padding: 2px;
     margin-bottom: 10px;
     box-sizing: border-box;
+    padding: 2rem;
+}
+.box {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* border: 1px solid red; */
+    width: calc(25% - 10px); /* Set initial width for 4 columns with 10px gap */
+    height: 14vh;
+    padding: 2px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding: 2rem;
+
 }
 
 .one {
+    border: 2px solid white;
+    /* vertical-align: middle; */
     width: 100%; /* Full width for .one on all screen sizes */
 }
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     .box {
-        width: calc(33.3333% - 10px); /* Set 3 columns with 10px gap */
+        width: calc(33.3333% - 10px); /* Set 3 columns with 
+        10px gap */
     }
 }
 
@@ -35,5 +51,6 @@
 @media (max-width: 576px) {
     .box {
         width: calc(50% - 10px); /* Set 2 columns with 10px gap */
-    }
+    }    
+   
 }

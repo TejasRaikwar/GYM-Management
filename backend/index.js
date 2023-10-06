@@ -197,6 +197,18 @@ server.post("/searchMember",async (req, res) => {
     }
 });
 
+// search Member in user side
+server.get("/findMember/:id", async(req,res) =>{
+    try{
+        const id = req.param.id;
+        const data = await User.findOne({id})
+        res.json(data)
+    }catch(error){
+        console.error('Error searching member:', error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+})
+
 // server started on port
 server.listen(process.env.PORT,()=>{
     console.log('server started');
