@@ -1,13 +1,16 @@
 import React from 'react'
 import UserPage from '../../components/Layouts/UserPage/UserPage'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import UserBody from '../../components/User/UserBody/UserBody';
 const UserLayout = () => {
   const token = localStorage.getItem('token');
   const role = localStorage.getItem('role');
-  if (token  && role === 'member') {
+  const id = localStorage.getItem('id');
+  const {userData} = useParams();
+  if (token && id && role === 'member') {
     return (
       <>
-        <UserPage />
+        <UserPage data = {userData}/>
       </>
     );
   } else {
@@ -21,4 +24,3 @@ const UserLayout = () => {
 }
 
 export default UserLayout
-{/* <UserPage/> */}

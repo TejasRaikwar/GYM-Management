@@ -9,6 +9,7 @@ const Signin = (props) => {
     password: "",
   });
   const [warning,setWarning] = useState("");
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     const { mobile, password } = value;
@@ -21,8 +22,7 @@ const Signin = (props) => {
         body: JSON.stringify({ mobile, password }),
       });
   
-      const data = await response.json();
-  
+      const data = await response.json();  
       if (response.status === 200 && data.success) {
         const { id, Token } = data;
         const decodedToken = JSON.parse(atob(Token.split(".")[1]));
@@ -33,7 +33,9 @@ const Signin = (props) => {
         if (userRole === "admin") {
           navigate("/app");
         } else if (userRole === "member") {
-          navigate("/user");
+          const userDataJson = JSON.stringify(data.data)
+          // navigate("/user");
+          navigate(`/user/${userDataJson}`); // pass data as parameter
         } else {
           console.error("Invalid user role:", userRole);
           setWarning("Login failed. Invalid credentials.")

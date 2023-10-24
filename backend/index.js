@@ -145,29 +145,6 @@ server.delete("/deleteMember/:id", async(req,res)=>{
 
 })
 
-// Middleware for token verification and role-based access
-function authenticateToken(req, res, next) {
-    const token = req.headers.authorization;
-    console.log(token);
-
-    if (!token) {
-      return res
-        .status(401)
-        .json({ success: false, message: "Token is missing." });
-    }
-  
-    jwt.verify(token, process.env.TOKEN, (err, decoded) => {
-      if (err) {
-        return res
-          .status(403)
-          .json({ success: false, message: "Invalid token." });
-      }
-  
-      req.user = decoded;
-      next();
-    });
-  }
-
 // login
 server.post("/searchMember",async (req, res) => {
     try {
@@ -182,7 +159,8 @@ server.post("/searchMember",async (req, res) => {
                     message: "Member Exists.", 
                     role: mem.role, 
                     id: mem._id, 
-                    Token: token 
+                    Token: token,
+                    data : mem,
                 });
             } else {
                 res.send({ success: false, message: "Password not matched." });
@@ -197,18 +175,22 @@ server.post("/searchMember",async (req, res) => {
     }
 });
 
-// search Member in user side
-server.get("/findMember/:id", async(req,res) =>{
+// Search member for bill
+server.post("/findMember/:mobile",async (req, res) => {
     try{
-        const id = req.param.id;
-        const data = await User.findOne({id})
-        res.json(data)
-    }catch(error){
-        console.error('Error searching member:', error);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
+        const mobile = req.params.mobile;
+        const user = await User.findOne({Mobile : mobile});
+
+        if(!user){
+            return res.status(404).json({message:"User not found"});
+        }
+        res.status(200).json(user);
+    }
+    catch(error){
+        res.status(500).json({ message: "Internal server error" });
     }
 })
-
+  
 // server started on port
 server.listen(process.env.PORT,()=>{
     console.log('server started');

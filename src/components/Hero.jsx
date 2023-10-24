@@ -14,6 +14,7 @@ const Hero = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const role = localStorage.getItem('role');
+  const id = localStorage.getItem('id');
   const handleRoute = () =>{
     if(role==='admin'){
       navigate('/app')
@@ -23,7 +24,7 @@ const Hero = () => {
     }
   }
   let buttonName="Log in";
-  if(token){
+  if(token && id){
     buttonName="Dashboard";
   }
   const [seen, setSeen] = useState(false)

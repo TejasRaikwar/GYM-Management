@@ -1,4 +1,5 @@
 import { Component, lazy } from 'react';
+const Bill = lazy(()=>import('../Pages/AdminPages/Bill/Bill'))
 const Dashboard = lazy(()=>import('../Pages/AdminPages/Dashboard/Dashboard'))
 const NewJoin = lazy(()=>import('../Pages/AdminPages/NewJoin/NewJoin'))
 const Notifications = lazy(()=>import('../Pages/AdminPages/Notifications/Notifications'))
@@ -39,6 +40,6 @@ const routes=[
     {
         path : '/addcustomer',
         component: AddCustomer,
-    }
+    },
 ]
 export default routes

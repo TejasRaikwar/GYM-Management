@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 const AdminLayout = () => {
   const token = localStorage.getItem('token');
   const role = localStorage.getItem('role');
-  if (token && role === 'admin') {
+  const id = localStorage.getItem('id');
+  if (token && role === 'admin' && id) {
     return (
       <>
         <AdminPage />

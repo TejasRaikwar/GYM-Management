@@ -91,3 +91,12 @@ select{
     border: 1px solid white;
     background-color: #242933;
 }
+
+
+
+.input-container {
+    display: flex;
+    flex-direction: column; /* Display the error message below the input */
+    align-items: flex-start; /* Align the input and error message to the start */
+  }
+  

@@ -4,7 +4,8 @@
     top: 0.5rem;
     height: 3rem;
     }
-div>button{
+div>form>button{
+    margin-top: 0.5rem;
     margin-left: 1rem;
     padding: 10px;
     background-color: orangered;
@@ -12,4 +13,41 @@ div>button{
     font-size:medium;
     font-weight: bold;
     border: none;
+}
+div>form>input{
+    margin-top: 1rem;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+    padding: 12px;
+    margin-bottom: 0.5rem;
+
+    border-radius: 2px;
+    width: 70%;
+    border: 1px solid white;
+    background-color: #242933;
+}
+
+
+/* /POP BOX FOR DELETE CONFIRM */
+.confirm-delete{
+    border-radius: 10px;
+    position: fixed;
+    background-color: #242933;
+    height: 300px;
+    width: 450px;
+    z-index: 5;
+    top: 25%;
+    left: 38%;
+    box-shadow: 9px 9px 20px 4px #97898942;
+    text-align: center;
+    padding-top: 5rem;
+    box-sizing: border-box;
+    color: white;
+}
+.confirm-delete>form>button{
+    width: 8rem;
+}
+.confirm-delete>form>button:hover{
+    cursor: pointer;
 }
