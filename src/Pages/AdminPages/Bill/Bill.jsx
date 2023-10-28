@@ -1,14 +1,104 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import './Bill.css';
 const Bill = () => {
   const token = localStorage.getItem('token');
   const role = localStorage.getItem('role');
   const id = localStorage.getItem('id');
+
+
+  const handlePrint = () =>{
+    window.print();
+  }
+
+
+
+
+
   if (token && id && role === 'admin') {
     return (
-      <>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis itaque ut, architecto eum ullam, deleniti numquam id quam laudantium consequuntur optio repellat aut unde cumque nesciunt rerum. Suscipit possimus ipsam omnis voluptatum sequi consequatur fuga. Nihil laudantium ipsam quia laborum repellendus facere, quam est unde quaerat harum doloremque earum veritatis numquam facilis necessitatibus omnis voluptatem iste impedit dolore, cumque temporibus explicabo culpa! Sed, nisi fugiat molestias libero explicabo porro tempore ullam quis modi, quo iste quae necessitatibus id quasi! Adipisci ipsam itaque a laudantium alias dolores odit consequatur nisi, voluptatibus temporibus? A iste quidem voluptatum cum distinctio quisquam quibusdam obcaecati.
-      </>
+      <div>
+        <main className="bill-main">
+          {/* Header */}
+          <header className="bill-header">
+            <div>
+              <h1>
+                Invoicer
+              </h1>
+            </div>
+            <div className="bill-ul">
+              <ul>
+                <li>
+                  <button className="btn btn-print" onClick={handlePrint}>
+                    Print
+                  </button>
+                </li>
+                <li>
+                  <button className="btn btn-download">Download</button>
+                </li>
+                <li>
+                  <button className="btn btn-send">Send</button>
+                </li>
+              </ul>
+            </div>
+          </header>
+          {/* Header Close */}
+
+          {/* Details */}
+          <section className="cust-details">
+            <h2>Tejas Raikwar</h2>
+            <p>Your Address</p>
+          </section>
+          {/* End of Details */}
+
+          {/* Client Details */}
+          <section className="client-details">
+            <h2>Cleint`s Name</h2>
+            <p>Client`s Addess</p>
+          </section>
+          {/* End of Client Details */}
+
+          {/* Date */}
+          <article className="bill-date">
+            <ul>
+              <li>
+                <span className="font-bold">Invoice Number:</span>
+              </li>
+              <li>
+                <span className="font-bold">Invoice Date:</span>
+              </li>
+              <li>
+                <span className="font-bold">Due Date:</span>
+              </li>
+            </ul>
+          </article>
+          {/* End of Date */}
+
+          {/* Table */}
+          <div className="my-5">
+            This is the table
+          </div>
+          {/* End of Table */}
+
+          {/* Notes */}
+          <section className="mb-5">
+            {/* Textarea */}
+            <p>Notes to the client...</p>
+          </section>
+          {/* End of Notes */}
+
+          {/* Footer */}
+          <footer className="bill-footer">
+            <ul>
+              <li><span className="font-bold">Your Name: </span>dummy data</li>
+              <li><span className="font-bold">Address: </span>dummy data</li>
+              <li><span className="font-bold">Phone Number: </span>dummy data</li>
+              <li><span className="font-bold">Website: </span>dummy data</li>
+            </ul>
+          </footer>
+          {/* End of Footer */}
+        </main>
+      </div>
     );
   } else {
     return (

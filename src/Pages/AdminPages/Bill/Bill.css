@@ -1,0 +1,84 @@
+.bill-main {
+    padding: 1.25rem;
+    margin: 1.25rem;
+    border-radius: 0.25rem;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.bill-header {
+    display: flex;
+    margin-bottom: 1.25rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bill-header>div>h1 {
+    margin-bottom: 0.75rem;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+.bill-ul>ul {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+.cust-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.cust-details>h2,.client-details>h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    text-transform: uppercase;
+}
+.client-details{
+    margin-top: 1.25rem; 
+}
+.bill-date {
+    display: flex;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.bill-date>ul{
+    text-decoration: none;
+    list-style: none;
+}
+.font-bold{
+    font-weight: 700; 
+}
+.my-5{
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem; 
+}
+.mb-5{
+    margin-bottom: 1.25rem;
+}
+.bill-footer>ul{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+@media (min-width: 1280px) {
+    .bill-main {
+        max-width: 56rem;
+    }
+
+    .bill-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
