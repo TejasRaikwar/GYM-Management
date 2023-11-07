@@ -45,7 +45,11 @@ const PendingPayments = () => {
               <td>{key.FeesBalance}</td>
               </tr>
             </tbody>
-            ))):null}
+            ))):(
+              <>
+                No Data to Display
+              </>
+            )}
             </table>
     </div>
     </div>

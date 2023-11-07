@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./UserBody.css";
-const UserBody = ({userData}) => {
+const UserBody = () => {
   const id = localStorage.getItem("id");
+  const userData = localStorage.getItem("userData")
   const [user,setUser] = useState();
   const data = JSON.parse(userData); 
   return (

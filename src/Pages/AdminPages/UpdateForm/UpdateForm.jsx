@@ -169,7 +169,6 @@ const UpdateForm = ({handleSubmit,handleForm,handleClose,rest}) => {
                 defaultValue={rest.JoinDate}
                 onChange={handleForm}
                 readOnly={!isEditable}
-                // required
               />
             </div>
             <div className="form-right-side">

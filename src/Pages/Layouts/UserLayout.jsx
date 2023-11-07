@@ -10,7 +10,7 @@ const UserLayout = () => {
   if (token && id && role === 'member') {
     return (
       <>
-        <UserPage data = {userData}/>
+        <UserPage/>
       </>
     );
   } else {

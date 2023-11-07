@@ -1,0 +1,109 @@
+.input-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #363D42;
+    height: fit-content;
+    width: auto;
+    color: white;
+}
+.input-box>form{
+    margin-top: 8px;
+    display: flex;
+    /* align-items: center; */
+}
+.input-box>form>span {
+    margin-top: 7px;
+    font-size: 1.3rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#phoneError {
+    display: block;
+}
+
+.input-box>form>button,.bill-save-button {
+    padding: 10px;
+    background-color: orangered;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    border: none;
+    width: 9rem;
+    height: 40px;
+    margin-left: 1rem;
+}
+
+.input-box>form>input {
+    margin-left: 1rem;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+    padding: 12px;
+    margin-bottom: 0.5rem;
+
+    border-radius: 2px;
+    width: 705px;
+    border: 1px solid white;
+    background-color: #242933;
+    height: 1rem;
+}
+
+
+/* payment form */
+label{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    overflow: hidden;
+}
+.second-input-box{
+    margin-top: 1rem;
+    border-radius: 5px;
+    background-color: #363D42;
+    padding: 1rem;
+}
+.second-input-box>form>.form>.try-input{
+    display: flex;
+}
+.form-left-side,.form-right-side{
+    margin-top: 10px;
+    min-width: calc((0.48)*100%);
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+.form{
+    width: 100%;
+}
+
+#joindate,
+#enddate,
+#pt,
+#feespaid,
+#feesbalance{
+    border-radius: 2px;
+    width: 50%;
+    border: 1px solid white;
+    background-color: #242933;
+}
+
+.bill-form-save-button{
+    text-align: center;
+}
+
+#pt{
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+    padding: 12px;
+    margin-bottom: 0.5rem;
+
+    border-radius: 2px;
+    width: 705px;
+    border: 1px solid white;
+    background-color: #242933;
+    height: 50px;
+    width: 56%; 
+}

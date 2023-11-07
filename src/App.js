@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePage/>}/>
           <Route path="/app/*" element={<AdminPage/>}/>
-          <Route path="/user/:userData" element={<UserPage/>}/>
+          <Route path="/user" element={<UserPage/>}/>
           <Route path="/payment" element={<Bill/>}/>
         </Routes>
       </Router>

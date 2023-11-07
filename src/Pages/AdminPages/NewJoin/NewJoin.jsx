@@ -36,7 +36,7 @@ const NewJoin = () => {
 
   return (
     <div className="new-joined">
-      <h2 style={{textAlign:"center"}}>Members Joined within 7 days</h2><br/>
+      <h2 style={{textAlign:"center",marginTop:"10px"}}>Members Joined within 7 days</h2><br/>
       <div className="table">
           <table>
             <thead>
@@ -59,7 +59,14 @@ const NewJoin = () => {
               <td>{new Date(key.EndDate).toLocaleDateString()}</td>
               </tr>
             </tbody>
-            ))):null}
+            ))):(
+              <td colSpan="7">
+              <p style={{ margin: "2rem", padding: "1rem" }}>
+                No Data available please add Members Data from Add Customers
+                Button above
+              </p>
+            </td>
+            )}
             </table>
     </div>
     </div>

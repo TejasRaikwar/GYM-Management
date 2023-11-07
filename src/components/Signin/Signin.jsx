@@ -35,7 +35,9 @@ const Signin = (props) => {
         } else if (userRole === "member") {
           const userDataJson = JSON.stringify(data.data)
           // navigate("/user");
-          navigate(`/user/${userDataJson}`); // pass data as parameter
+          localStorage.setItem("userData",userDataJson);
+          navigate("/user"); // pass //data as parameter
+          // navigate(`/user/${userDataJson}`); // pass data as parameter
         } else {
           console.error("Invalid user role:", userRole);
           setWarning("Login failed. Invalid credentials.")

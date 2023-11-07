@@ -7,7 +7,7 @@ axios.defaults.baseURl = "http://localhost:8080/"
 const AddCustomer= () => {
   const [message, setMessage] = useState("");
   const [popmsg, setPopmsg] = useState(false);
-    const [form,setForm] = useState({})
+  const [form,setForm] = useState({})
     const handleForm = (e) => {
       const input = e.target;
       const name = input.name;
@@ -157,7 +157,6 @@ const AddCustomer= () => {
           <div className="try-input">
             <div className="form-left-side">
               <label>Personal Training : {"  "}</label>
-              {/* <input type="number" id="bmi" name="bmi" placeholder="BMI" min="0" onChange={handleForm}   required /> */}
               <select name="pt" id="pt" onChange={handleForm}>
                 <option value="" disabled selected>
                   Select an option
