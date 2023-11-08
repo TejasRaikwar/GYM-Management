@@ -4,7 +4,7 @@ import "./BillForm.css";
 import { useState } from "react";
 
 const BillForm = () => {
-  const [seen, setSeen] = useState(false);
+  const [seen, setSeen] = useState(true);
   const [userData, setUserData] = useState({});
 
   const handleSubmit = async (e) => {
@@ -106,6 +106,7 @@ const BillForm = () => {
                 <div className="try-input">
                   <div className="form-left-side">
                     <label>Start Date : {"  "}</label>
+                    {console.log(userData.JoinDate)}
                     <input
                       type="date"
                       id="joindate"

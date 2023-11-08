@@ -33,7 +33,7 @@
     margin-left: 1rem;
 }
 
-.input-box>form>input {
+ .input-box>form>input{
     margin-left: 1rem;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -46,7 +46,7 @@
     border: 1px solid white;
     background-color: #242933;
     height: 1rem;
-}
+} 
 
 
 /* payment form */
@@ -106,4 +106,15 @@ label{
     background-color: #242933;
     height: 50px;
     width: 56%; 
+}
+
+#joindate,
+#enddate,
+#pt,
+#feespaid,
+#feesbalance{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
 }
