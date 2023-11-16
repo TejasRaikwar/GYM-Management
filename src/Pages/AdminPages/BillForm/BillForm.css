@@ -84,7 +84,8 @@ label{
 #feespaid,
 #feesbalance{
     border-radius: 2px;
-    width: 50%;
+    width: 60%;
+    /* width: 50%; */
     border: 1px solid white;
     background-color: #242933;
 }
@@ -105,7 +106,7 @@ label{
     border: 1px solid white;
     background-color: #242933;
     height: 50px;
-    width: 56%; 
+    width: 65%; 
 }
 
 #joindate,

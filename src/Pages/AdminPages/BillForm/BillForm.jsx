@@ -6,6 +6,10 @@ import { useState } from "react";
 const BillForm = () => {
   const [seen, setSeen] = useState(true);
   const [userData, setUserData] = useState({});
+  const [userContainer, setUserContainer] = useState({});
+
+  const formattedJoinDate = new Date(userData.JoinDate).toISOString().split('T')[0];
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,9 +51,9 @@ const BillForm = () => {
       );
       if (response.status === 200) {
         const userData1 = await response.json();
-        setUserData(userData1)
+        setUserData(userData1);
         console.log(userData.Name);
-        setSeen(false)
+        setSeen(false);
       } else {
         console.error("Error fetching user data:", response.statusText);
         writeError();
@@ -96,7 +100,11 @@ const BillForm = () => {
             />
             <button type="submit">Submit</button>
           </form>
-          <span id="phoneError" className="text-danger" style={{ color: "red" }} />
+          <span
+            id="phoneError"
+            className="text-danger"
+            style={{ color: "red" }}
+          />
         </div>
       ) : (
         <>
@@ -129,7 +137,12 @@ const BillForm = () => {
                 <div className="try-input">
                   <div className="form-left-side">
                     <label>Personal Training : {"  "}</label>
-                    <select name="pt" id="pt" onChange={handleForm}>
+                    <select
+                      name="pt"
+                      id="pt"
+                      onChange={handleForm}
+                      defaultValue={userData.PT}
+                    >
                       <option value="" disabled selected>
                         Select an option
                       </option>
