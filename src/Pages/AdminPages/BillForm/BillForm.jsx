@@ -6,10 +6,15 @@ import { useState } from "react";
 const BillForm = () => {
   const [seen, setSeen] = useState(true);
   const [userData, setUserData] = useState({});
-  const [userContainer, setUserContainer] = useState({});
 
-  const formattedJoinDate = new Date(userData.JoinDate).toISOString().split('T')[0];
+  // membership
 
+  const [membershipType, setMembershipType] = useState("");
+  const [joinDate, setJoinDate] = useState("");
+
+  // console.log(membership)
+
+  // end of membership
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,6 +69,7 @@ const BillForm = () => {
   };
 
   //
+  /*
   const [form, setForm] = useState({});
   const handleForm = (e) => {
     const input = e.target;
@@ -78,12 +84,133 @@ const BillForm = () => {
       }
     }
 
+    if (name === "joindate" || name === "membershiptype") {
+      const calculatedEndDate = calculateEndDate(joinDate, membershipType);
+      setForm({
+        ...form,
+        enddate: calculatedEndDate,
+        membershiptype: membershipType, // Save membership type in the form state
+      });
+    }
+
     setForm({
       ...form,
       [name]: value,
     });
   };
+*/
+const [form, setForm] = useState({});
+/*
+const handleForm = (e) => {
+  const input = e.target;
+  const name = input.name;
+  const value = input.value;
 
+  if (name === "mobilenum") {
+    if (value.length !== 10 || value < 0 || value > 9999999999) {
+      input.setCustomValidity("Please enter a valid 10-digit mobile number.");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
+
+  if (name === "joindate") {
+    const calculatedEndDate = calculateEndDate(value, membershipType);
+    setForm({
+      ...form,
+      enddate: calculatedEndDate,
+    });
+  }
+
+  if (name === "membershiptype") {
+    const calculatedEndDate = calculateEndDate(joinDate, value);
+    setForm({
+      ...form,
+      enddate: calculatedEndDate,
+      membershiptype: value,
+    });
+    setMembershipType(value);
+  }
+
+  setForm({
+    ...form,
+    [name]: value,
+  });
+};
+*/
+// 
+
+
+const handleForm = (e) => {
+  const input = e.target;
+  const name = input.name;
+  const value = input.value;
+
+  if (name === "mobilenum") {
+    if (value.length !== 10 || value < 0 || value > 9999999999) {
+      input.setCustomValidity("Please enter a valid 10-digit mobile number.");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
+
+  if (name === "joindate") {
+    const calculatedEndDate = calculateEndDate(value, membershipType);
+    setForm({
+      ...form,
+      [name]: value,
+      enddate: calculatedEndDate,
+    });
+  }
+
+  if (name === "membershiptype") {
+    const calculatedEndDate = calculateEndDate(joinDate, value);
+    setForm({
+      ...form,
+      [name]: value,
+      enddate: calculatedEndDate,
+    });
+    console.log(form.endDate);
+    setMembershipType(value);
+  }
+
+  if (name === "enddate") {
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  }
+};
+
+
+// 
+  const calculateEndDate = (startDate, membershipType) => {
+    const start = new Date(startDate);
+    let endDate = new Date(start);
+  
+    switch (membershipType) {
+      case "1MH":
+        endDate.setMonth(endDate.getMonth() + 1);
+        break;
+      case "3MH":
+        endDate.setMonth(endDate.getMonth() + 3);
+        break;
+      case "6MH":
+        endDate.setMonth(endDate.getMonth() + 6);
+        break;
+      case "12MH":
+        endDate.setFullYear(endDate.getFullYear() + 1);
+        break;
+      // Add cases for other membership types
+      default:
+        break;
+    }
+  
+    const formattedEndDate = endDate.toISOString().split("T")[0];
+    return formattedEndDate;
+  };
+
+  
   return (
     <>
       {seen ? (
@@ -111,16 +238,45 @@ const BillForm = () => {
           <div className="second-input-box">
             <form onSubmit={handleSubmit}>
               <div className="form">
+                <div className="try-input" id="membershiptype-container">
+                  <label>Membership Type : {"  "}</label>
+                  <select
+                    name="membershiptype"
+                    id="membershiptype"
+                    onChange={(e) => setMembershipType(e.target.value)}
+                  >
+                    <option value="" disabled selected>
+                      Select an option
+                    </option>
+                    <optgroup label="Hardcore">
+                      <option value="1MH">1 Month</option>
+                      <option value="3MH">3 Months</option>
+                      <option value="6MH">6 Months</option>
+                      <option value="12MH">Annual</option>
+                    </optgroup>
+                    <optgroup label="Hardcore + PT + Cardio">
+                      <option value="3HPC">3 Months</option>
+                    </optgroup>
+                    <optgroup label="Hardcore + Cardio">
+                      <option value="3MHC">3 Months</option>
+                      <option value="6MHC">6 Months</option>
+                      <option value="12MHC">Annual</option>
+                    </optgroup>
+                  </select>
+                  {/* </div> */}
+                </div>
                 <div className="try-input">
                   <div className="form-left-side">
                     <label>Start Date : {"  "}</label>
-                    {console.log(userData.JoinDate)}
                     <input
                       type="date"
                       id="joindate"
                       name="JoinDate"
                       defaultValue={userData.JoinDate}
-                      onChange={handleForm}
+                      onChange={(e) => {
+                        setJoinDate(e.target.value);
+                        handleForm(e);
+                      }}
                     />
                   </div>
                   <div className="form-right-side">
@@ -132,33 +288,6 @@ const BillForm = () => {
                       onChange={handleForm}
                       required
                     />
-                  </div>
-                </div>
-                <div className="try-input">
-                  <div className="form-left-side">
-                    <label>Personal Training : {"  "}</label>
-                    <select
-                      name="pt"
-                      id="pt"
-                      onChange={handleForm}
-                      defaultValue={userData.PT}
-                    >
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-                  <div className="form-right-side">
-                    <label>Personal Training : {"  "}</label>
-                    <select name="pt" id="pt" onChange={handleForm}>
-                      <option value="" disabled selected>
-                        Select an option
-                      </option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
                   </div>
                 </div>
                 <div className="try-input">

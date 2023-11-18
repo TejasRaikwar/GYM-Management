@@ -74,13 +74,23 @@ label{
     align-items: center;
     margin: 10px;
 }
+
+#membershiptype{
+    margin-top: 10px;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    /* width: 100%; */
+    margin-left: 1.9rem;
+}
 .form{
     width: 100%;
 }
 
 #joindate,
 #enddate,
-#pt,
 #feespaid,
 #feesbalance{
     border-radius: 2px;
@@ -94,7 +104,7 @@ label{
     text-align: center;
 }
 
-#pt{
+#membershiptype{
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.2rem;
@@ -102,11 +112,10 @@ label{
     margin-bottom: 0.5rem;
 
     border-radius: 2px;
-    width: 705px;
+    width: 81%;
     border: 1px solid white;
     background-color: #242933;
     height: 50px;
-    width: 65%; 
 }
 
 #joindate,
@@ -118,4 +127,9 @@ label{
     color: white;
     font-weight: 400;
     font-size: 1.2rem;
+}
+
+#membershiptype-container{
+    display: flex;
+    align-items: center;
 }
