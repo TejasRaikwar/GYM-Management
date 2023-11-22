@@ -3,9 +3,11 @@ import "./BillForm.css";
 import { useState } from "react";
 
 const BillForm = () => {
+  // form switch
+  const [seen, setSeen] = useState("false");
   // Part 1 : find user
   const [mobile, setMobile] = useState("");
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validateForm();
@@ -42,11 +44,12 @@ const BillForm = () => {
         }
       );
       if (response.status === 200) {
-        const userData1 = await response.json();
-        // setUserData(userData1);
+        const userData = await response.json();
+        const Name = userData.Name;
         // console.log(userData.Name);
-        console.log(userData1);
-        // setSeen(false);
+        console.log(userData);
+        console.log(Name);
+        setSeen(false);
       } else {
         console.error("Error fetching user data:", response.statusText);
         writeError();
@@ -59,10 +62,48 @@ const BillForm = () => {
   // End Of 1st Part
 
   // Part 2 : Bill Data
+
+  // save data in form
+  const [form, setForm] = useState({});
+  const handleForm = (e) =>{
+    const input = e.target;
+    const name = input.name;
+    const value = input.value;
+
+    setForm({
+      ...form,
+      [name] : value
+    });
+    
+  };
   
+  const handleUpdate = async (e) =>{
+    e.preventDefault();
+    console.log(form);
+  }
+
+  // const handleStartdate = (e) => { 
+  //   document.getElementById("enddate").value = "2001-02-12";
+  //   handleForm(e);
+  // }
+
+  const handleStartdate = () => { 
+    const endDateInput = document.getElementById("enddate");
+    endDateInput.value = "2001-02-12";
+    handleForm({ target: endDateInput });
+  };
+  
+
+  /*
+      var someDate = new Date();
+      var numberOfDaysToAdd = 6;
+      var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+      console.log(new Date(result))
+  */
+
   return (
     <>
-      {/* {seen ? ( */}
+      {seen ? (
         <div className="input-box">
           <form onSubmit={handleSubmit}>
             <span>Enter Mobile Number : </span>
@@ -82,17 +123,18 @@ const BillForm = () => {
             style={{ color: "red" }}
           />
         </div>
-      {/* ) : ( */}
-        {/* <>
+      ) : (
+        <>
           <div className="second-input-box">
-            <form onSubmit={handleSubmit}>
+            {/* <form> */}
+            <form onSubmit={handleUpdate}>
               <div className="form">
                 <div className="try-input" id="membershiptype-container">
                   <label>Membership Type : {"  "}</label>
                   <select
                     name="membershiptype"
                     id="membershiptype"
-                    onChange={(e) => setMembershipType(e.target.value)}
+                    onChange={handleForm}
                   >
                     <option value="" disabled selected>
                       Select an option
@@ -112,20 +154,15 @@ const BillForm = () => {
                       <option value="12MHC">Annual</option>
                     </optgroup>
                   </select>
-                  
                 </div>
                 <div className="try-input">
                   <div className="form-left-side">
                     <label>Start Date : {"  "}</label>
                     <input
                       type="date"
-                      id="joindate"
-                      name="JoinDate"
-                      defaultValue={userData.JoinDate}
-                      onChange={(e) => {
-                        setJoinDate(e.target.value);
-                        handleForm(e);
-                      }}
+                      id="start-date"
+                      name="start-date"
+                      onChange={handleStartdate}
                     />
                   </div>
                   <div className="form-right-side">
@@ -135,7 +172,8 @@ const BillForm = () => {
                       id="enddate"
                       name="enddate"
                       onChange={handleForm}
-                      required
+                      // defaultValue={"2001-02-12"}
+                      // required
                     />
                   </div>
                 </div>
@@ -149,8 +187,8 @@ const BillForm = () => {
                       name="feespaid"
                       placeholder="Fees Paid"
                       onChange={handleForm}
-                      defaultValue={userData.FeesPaid}
-                      required
+                      // defaultValue={userData.FeesPaid}
+                      // required
                     />
                   </div>
                   <div className="form-right-side">
@@ -176,8 +214,8 @@ const BillForm = () => {
               </div>
             </form>
           </div>
-        </> */}
-      {/* )} */}
+        </>
+      )}
     </>
   );
 };
