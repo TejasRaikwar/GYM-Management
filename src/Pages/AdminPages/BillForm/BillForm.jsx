@@ -1,21 +1,11 @@
 import React from "react";
 import "./BillForm.css";
-// import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const BillForm = () => {
-  const [seen, setSeen] = useState(true);
-  const [userData, setUserData] = useState({});
-
-  // membership
-
-  const [membershipType, setMembershipType] = useState("");
-  const [joinDate, setJoinDate] = useState("");
-
-  // console.log(membership)
-
-  // end of membership
-
+  // Part 1 : find user
+  const [mobile, setMobile] = useState("");
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validateForm();
@@ -24,7 +14,6 @@ const BillForm = () => {
       handleFindUser();
     }
   };
-
   function writeError() {
     document.getElementById("phoneError").innerHTML = "User not found.";
   }
@@ -44,8 +33,6 @@ const BillForm = () => {
     return isValid;
   }
 
-  // Find Member:
-  const [mobile, setMobile] = useState("");
   const handleFindUser = async () => {
     try {
       const response = await fetch(
@@ -56,9 +43,10 @@ const BillForm = () => {
       );
       if (response.status === 200) {
         const userData1 = await response.json();
-        setUserData(userData1);
-        console.log(userData.Name);
-        setSeen(false);
+        // setUserData(userData1);
+        // console.log(userData.Name);
+        console.log(userData1);
+        // setSeen(false);
       } else {
         console.error("Error fetching user data:", response.statusText);
         writeError();
@@ -68,152 +56,13 @@ const BillForm = () => {
     }
   };
 
-  //
-  /*
-  const [form, setForm] = useState({});
-  const handleForm = (e) => {
-    const input = e.target;
-    const name = input.name;
-    const value = input.value;
+  // End Of 1st Part
 
-    if (name === "mobilenum") {
-      if (value.length !== 10 || value < 0 || value > 9999999999) {
-        input.setCustomValidity("Please enter a valid 10-digit mobile number.");
-      } else {
-        input.setCustomValidity("");
-      }
-    }
-
-    if (name === "joindate" || name === "membershiptype") {
-      const calculatedEndDate = calculateEndDate(joinDate, membershipType);
-      setForm({
-        ...form,
-        enddate: calculatedEndDate,
-        membershiptype: membershipType, // Save membership type in the form state
-      });
-    }
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-*/
-const [form, setForm] = useState({});
-/*
-const handleForm = (e) => {
-  const input = e.target;
-  const name = input.name;
-  const value = input.value;
-
-  if (name === "mobilenum") {
-    if (value.length !== 10 || value < 0 || value > 9999999999) {
-      input.setCustomValidity("Please enter a valid 10-digit mobile number.");
-    } else {
-      input.setCustomValidity("");
-    }
-  }
-
-  if (name === "joindate") {
-    const calculatedEndDate = calculateEndDate(value, membershipType);
-    setForm({
-      ...form,
-      enddate: calculatedEndDate,
-    });
-  }
-
-  if (name === "membershiptype") {
-    const calculatedEndDate = calculateEndDate(joinDate, value);
-    setForm({
-      ...form,
-      enddate: calculatedEndDate,
-      membershiptype: value,
-    });
-    setMembershipType(value);
-  }
-
-  setForm({
-    ...form,
-    [name]: value,
-  });
-};
-*/
-// 
-
-
-const handleForm = (e) => {
-  const input = e.target;
-  const name = input.name;
-  const value = input.value;
-
-  if (name === "mobilenum") {
-    if (value.length !== 10 || value < 0 || value > 9999999999) {
-      input.setCustomValidity("Please enter a valid 10-digit mobile number.");
-    } else {
-      input.setCustomValidity("");
-    }
-  }
-
-  if (name === "joindate") {
-    const calculatedEndDate = calculateEndDate(value, membershipType);
-    setForm({
-      ...form,
-      [name]: value,
-      enddate: calculatedEndDate,
-    });
-  }
-
-  if (name === "membershiptype") {
-    const calculatedEndDate = calculateEndDate(joinDate, value);
-    setForm({
-      ...form,
-      [name]: value,
-      enddate: calculatedEndDate,
-    });
-    console.log(form.endDate);
-    setMembershipType(value);
-  }
-
-  if (name === "enddate") {
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  }
-};
-
-
-// 
-  const calculateEndDate = (startDate, membershipType) => {
-    const start = new Date(startDate);
-    let endDate = new Date(start);
-  
-    switch (membershipType) {
-      case "1MH":
-        endDate.setMonth(endDate.getMonth() + 1);
-        break;
-      case "3MH":
-        endDate.setMonth(endDate.getMonth() + 3);
-        break;
-      case "6MH":
-        endDate.setMonth(endDate.getMonth() + 6);
-        break;
-      case "12MH":
-        endDate.setFullYear(endDate.getFullYear() + 1);
-        break;
-      // Add cases for other membership types
-      default:
-        break;
-    }
-  
-    const formattedEndDate = endDate.toISOString().split("T")[0];
-    return formattedEndDate;
-  };
-
+  // Part 2 : Bill Data
   
   return (
     <>
-      {seen ? (
+      {/* {seen ? ( */}
         <div className="input-box">
           <form onSubmit={handleSubmit}>
             <span>Enter Mobile Number : </span>
@@ -233,8 +82,8 @@ const handleForm = (e) => {
             style={{ color: "red" }}
           />
         </div>
-      ) : (
-        <>
+      {/* ) : ( */}
+        {/* <>
           <div className="second-input-box">
             <form onSubmit={handleSubmit}>
               <div className="form">
@@ -263,7 +112,7 @@ const handleForm = (e) => {
                       <option value="12MHC">Annual</option>
                     </optgroup>
                   </select>
-                  {/* </div> */}
+                  
                 </div>
                 <div className="try-input">
                   <div className="form-left-side">
@@ -327,8 +176,8 @@ const handleForm = (e) => {
               </div>
             </form>
           </div>
-        </>
-      )}
+        </> */}
+      {/* )} */}
     </>
   );
 };
