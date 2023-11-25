@@ -46,9 +46,6 @@ const BillForm = () => {
       if (response.status === 200) {
         const userData = await response.json();
         const Name = userData.Name;
-        // console.log(userData.Name);
-        console.log(userData);
-        console.log(Name);
         setSeen(false);
       } else {
         console.error("Error fetching user data:", response.statusText);
@@ -62,44 +59,74 @@ const BillForm = () => {
   // End Of 1st Part
 
   // Part 2 : Bill Data
-
-  // save data in form
   const [form, setForm] = useState({});
-  const handleForm = (e) =>{
+
+  const handleForm = (e) => {
     const input = e.target;
     const name = input.name;
     const value = input.value;
 
     setForm({
       ...form,
-      [name] : value
+      [name]: value,
     });
-    
   };
-  
-  const handleUpdate = async (e) =>{
+  const handleUpdate = async (e) => {
     e.preventDefault();
     console.log(form);
-  }
-
-  // const handleStartdate = (e) => { 
-  //   document.getElementById("enddate").value = "2001-02-12";
-  //   handleForm(e);
-  // }
-
-  const handleStartdate = () => { 
-    const endDateInput = document.getElementById("enddate");
-    endDateInput.value = "2001-02-12";
-    handleForm({ target: endDateInput });
   };
-  
 
-  /*
-      var someDate = new Date();
-      var numberOfDaysToAdd = 6;
-      var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-      console.log(new Date(result))
-  */
+  const handleEnddate = () => {
+    const startdateInput = document.getElementById("start-date");
+    const endDateInput = document.getElementById("enddate");
+    endDateInput.value = calculateEndDate(
+      document.getElementById("start-date").value,
+      document.getElementById("membershiptype").value
+    ).toString();
+
+    handleForm({
+      target: {
+        name: "endDate",
+        value: endDateInput.value,
+      },
+    });
+  };
+
+  const calculateEndDate = (startDate, membershipType) => {
+    const start = new Date(startDate);
+    let endDate = new Date(start);
+
+    switch (membershipType) {
+      case "1MH":
+        endDate.setMonth(endDate.getMonth() + 1);
+        break;
+      case "3MH":
+        endDate.setMonth(endDate.getMonth() + 3);
+        break;
+      case "6MH":
+        endDate.setMonth(endDate.getMonth() + 6);
+        break;
+      case "12MH":
+        endDate.setFullYear(endDate.getFullYear() + 1);
+        break;
+      case "3MHPC":
+        endDate.setMonth(endDate.getMonth() + 3);
+        break;
+      case "3MHC":
+        endDate.setMonth(endDate.getMonth() + 3);
+        break;
+      case "6MHC":
+        endDate.setMonth(endDate.getMonth() + 6);
+        break;
+      case "12MHC":
+        endDate.setFullYear(endDate.getFullYear() + 1);
+        break;
+      default:
+        break;
+    }
+    const formattedEndDate = endDate.toISOString().split("T")[0];
+    return formattedEndDate;
+  };
 
   return (
     <>
@@ -126,7 +153,6 @@ const BillForm = () => {
       ) : (
         <>
           <div className="second-input-box">
-            {/* <form> */}
             <form onSubmit={handleUpdate}>
               <div className="form">
                 <div className="try-input" id="membershiptype-container">
@@ -146,7 +172,7 @@ const BillForm = () => {
                       <option value="12MH">Annual</option>
                     </optgroup>
                     <optgroup label="Hardcore + PT + Cardio">
-                      <option value="3HPC">3 Months</option>
+                      <option value="3MHPC">3 Months</option>
                     </optgroup>
                     <optgroup label="Hardcore + Cardio">
                       <option value="3MHC">3 Months</option>
@@ -162,7 +188,7 @@ const BillForm = () => {
                       type="date"
                       id="start-date"
                       name="start-date"
-                      onChange={handleStartdate}
+                      onChange={handleForm}
                     />
                   </div>
                   <div className="form-right-side">
@@ -171,9 +197,7 @@ const BillForm = () => {
                       type="date"
                       id="enddate"
                       name="enddate"
-                      onChange={handleForm}
-                      // defaultValue={"2001-02-12"}
-                      // required
+                      onClick={handleEnddate}
                     />
                   </div>
                 </div>
