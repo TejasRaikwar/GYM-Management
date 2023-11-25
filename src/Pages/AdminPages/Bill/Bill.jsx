@@ -38,7 +38,9 @@ const Bill = () => {
 
           {/* Details */}
           <section className="cust-details">
-            <h2>Royalty Fitness</h2>
+            <h2>Royalty Fitness
+              
+            </h2>
             <p>Your Address</p>
           </section>
           {/* End of Details */}
