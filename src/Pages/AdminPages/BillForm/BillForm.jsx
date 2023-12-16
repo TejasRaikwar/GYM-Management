@@ -45,7 +45,6 @@ const BillForm = () => {
       );
       if (response.status === 200) {
         const userData = await response.json();
-        const Name = userData.Name;
         setSeen(false);
       } else {
         console.error("Error fetching user data:", response.statusText);
@@ -133,7 +132,7 @@ const BillForm = () => {
       {seen ? (
         <div className="input-box">
           <form onSubmit={handleSubmit}>
-            <span>Enter Mobile Number : </span>
+            <span className="mobile-span">Enter Mobile Number : </span>
             <input
               type="number"
               id="mobilenum"
@@ -156,7 +155,7 @@ const BillForm = () => {
             <form onSubmit={handleUpdate}>
               <div className="form">
                 <div className="try-input" id="membershiptype-container">
-                  <label>Membership Type : {"  "}</label>
+                  <label style={{width:"190px"}}>Membership Type : {"  "}</label>
                   <select
                     name="membershiptype"
                     id="membershiptype"
@@ -211,8 +210,6 @@ const BillForm = () => {
                       name="feespaid"
                       placeholder="Fees Paid"
                       onChange={handleForm}
-                      // defaultValue={userData.FeesPaid}
-                      // required
                     />
                   </div>
                   <div className="form-right-side">

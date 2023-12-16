@@ -82,8 +82,7 @@ label{
     justify-content: space-between;
     align-items: center;
     margin: 10px;
-    /* width: 100%; */
-    margin-left: 1.9rem;
+    margin-left: 0rem;
 }
 .form{
     width: 100%;
@@ -132,4 +131,8 @@ label{
 #membershiptype-container{
     display: flex;
     align-items: center;
+}
+
+.mobile-span{
+    width:220px;
 }

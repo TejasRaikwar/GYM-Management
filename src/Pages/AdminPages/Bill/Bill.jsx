@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Bill.css";
+import Logo2 from '../../../assets/logo2_black.png';
+
 const Bill = () => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
@@ -16,7 +18,8 @@ const Bill = () => {
           {/* Header */}
           <header className="bill-header">
             <div>
-              <h1>Invoicer</h1>
+              {/* <h1>Invoicer</h1> */}
+              <img className="bill-logo" src={Logo2} alt=""  />
             </div>
             <div className="bill-ul">
               <ul>
@@ -38,9 +41,7 @@ const Bill = () => {
 
           {/* Details */}
           <section className="cust-details">
-            <h2>Royalty Fitness
-              
-            </h2>
+            <h2>Royalty Fitness</h2>
             <p>Your Address</p>
           </section>
           {/* End of Details */}
@@ -71,7 +72,7 @@ const Bill = () => {
           {/* Table */}
           <div className="my-5">
             <table width="100%">
-              <thead style={{backgroundColor:"#edf2f7"}}>
+              <thead style={{ backgroundColor: "#edf2f7" }}>
                 <tr>
                   <th>Membership</th>
                   <th>Start Date</th>
@@ -79,7 +80,7 @@ const Bill = () => {
                   <th>Amount</th>
                 </tr>
               </thead>
-              <tbody style={{textAlign:"center"}}>
+              <tbody style={{ textAlign: "center" }}>
                 <tr>
                   <td>3 Months membership</td>
                   <td>30-12-2023</td>
@@ -92,10 +93,9 @@ const Bill = () => {
           {/* End of Table */}
 
           {/* Notes */}
-          <section className="mb-5" style={{marginTop:"2.5rem"}}>
+          <section className="mb-5" style={{ marginTop: "2.5rem" }}>
             {/* Textarea */}
             <p>Notes to the client...</p>
-            
           </section>
           {/* End of Notes */}
 
@@ -106,7 +106,8 @@ const Bill = () => {
                 <span className="font-bold">Your Name: </span>dummy data
               </li>
               <li>
-              {" "}<span className="font-bold">Address: </span>dummy data
+                {" "}
+                <span className="font-bold">Address: </span>dummy data
               </li>
               <li>
                 <span className="font-bold">Phone Number: </span>dummy data
