@@ -1,9 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Bill.css";
-import Logo2 from '../../../assets/logo2_black.png';
+import Logo2 from "../../../assets/logo2_black.png";
 
 const Bill = () => {
+  // Call useParams as a function to get the parameters
+  // const { userData, formData } = useParams();
+
+  // Decode the URL-encoded JSON strings
+  // const decodedUserData = JSON.parse(decodeURIComponent(userData));
+  // const decodedFormData = JSON.parse(decodeURIComponent(formData));
+
+  // Handle the decoded data as needed
+  // console.log("Decoded User Data:", decodedUserData);
+  // console.log("Decoded Form Data:", decodedFormData);
+//
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
   const id = localStorage.getItem("id");
@@ -18,8 +29,7 @@ const Bill = () => {
           {/* Header */}
           <header className="bill-header">
             <div>
-              {/* <h1>Invoicer</h1> */}
-              <img className="bill-logo" src={Logo2} alt=""  />
+              <img className="bill-logo" src={Logo2} alt="" />
             </div>
             <div className="bill-ul">
               <ul>

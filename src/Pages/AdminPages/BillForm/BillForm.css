@@ -10,7 +10,6 @@
 .input-box>form{
     margin-top: 8px;
     display: flex;
-    /* align-items: center; */
 }
 .input-box>form>span {
     margin-top: 7px;
@@ -82,7 +81,7 @@ label{
     justify-content: space-between;
     align-items: center;
     margin: 10px;
-    margin-left: 0rem;
+    margin-left: 1.3rem;
 }
 .form{
     width: 100%;
@@ -125,7 +124,6 @@ label{
     color: white;
     font-weight: 400;
     font-size: 1.2rem;
-    /* height:50px; */
 }
 
 #membershiptype-container{
