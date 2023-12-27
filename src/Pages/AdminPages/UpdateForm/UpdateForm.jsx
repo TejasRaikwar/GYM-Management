@@ -129,7 +129,7 @@ const UpdateForm = ({handleSubmit,handleForm,handleClose,rest}) => {
           </div>
           <div className="try-input">
             <div className="form-left-side">
-              <label>Personal Training : {"  "}</label>
+              <label>Membership Type : {"  "}</label>
               <select
                 name="PT"
                 id="PT"
@@ -137,11 +137,28 @@ const UpdateForm = ({handleSubmit,handleForm,handleClose,rest}) => {
                 defaultValue={rest.PT}
                 readOnly={!isEditable}
               >
-                <option value="" disabled selected>
+                {/* <option value="" disabled selected>
                   Select an option
                 </option>
                 <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="No">No</option> */}
+                    <option value="" disabled selected>
+                      Select an option
+                    </option>
+                    <optgroup label="Hardcore">
+                      <option value="1MH">1 Month</option>
+                      <option value="3MH">3 Months</option>
+                      <option value="6MH">6 Months</option>
+                      <option value="12MH">Annual</option>
+                    </optgroup>
+                    <optgroup label="Hardcore + PT + Cardio">
+                      <option value="3MHPC">3 Months</option>
+                    </optgroup>
+                    <optgroup label="Hardcore + Cardio">
+                      <option value="3MHC">3 Months</option>
+                      <option value="6MHC">6 Months</option>
+                      <option value="12MHC">Annual</option>
+                    </optgroup>
               </select>
             </div>
             <div className="form-right-side">

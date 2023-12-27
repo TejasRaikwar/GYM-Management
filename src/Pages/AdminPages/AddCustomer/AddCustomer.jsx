@@ -50,6 +50,10 @@ const AddCustomer = () => {
       console.log(error);
     }
   };
+  // const handleSubmit = (e) =>{
+  //   e.preventDefault();
+  //   console.log(form);
+  // }
   function validateForm() {
     let isValid = true;
     const contact = document.getElementById("mobilenum").value;
@@ -65,15 +69,59 @@ const AddCustomer = () => {
     return isValid;
   }
 
+  // handle membership type and Date
+  const handleEnddate = () => {
+    const startdateInput = document.getElementById("joindate");
+    const endDateInput = document.getElementById("enddate");
+    endDateInput.value = calculateEndDate(
+      document.getElementById("joindate").value,
+      document.getElementById("pt").value
+    ).toString();
 
-// handle membership type and Date 
+    handleForm({
+      target: {
+        name: "endDate",
+        value: endDateInput.value,
+      },
+    });
+  };
 
+  const calculateEndDate = (startDate, membershipType) => {
+    const start = new Date(startDate);
+    let endDate = new Date(start);
 
-
-
-
-
-// End
+    switch (membershipType) {
+      case "1MH":
+        endDate.setMonth(endDate.getMonth() + 1);
+        break;
+      case "3MH":
+        endDate.setMonth(endDate.getMonth() + 3);
+        break;
+      case "6MH":
+        endDate.setMonth(endDate.getMonth() + 6);
+        break;
+      case "12MH":
+        endDate.setFullYear(endDate.getFullYear() + 1);
+        break;
+      case "3MHPC":
+        endDate.setMonth(endDate.getMonth() + 3);
+        break;
+      case "3MHC":
+        endDate.setMonth(endDate.getMonth() + 3);
+        break;
+      case "6MHC":
+        endDate.setMonth(endDate.getMonth() + 6);
+        break;
+      case "12MHC":
+        endDate.setFullYear(endDate.getFullYear() + 1);
+        break;
+      default:
+        break;
+    }
+    const formattedEndDate = endDate.toISOString().split("T")[0];
+    return formattedEndDate;
+  };
+  // End
 
   return (
     <>
@@ -132,7 +180,7 @@ const AddCustomer = () => {
                   name="age"
                   placeholder="Age"
                   min="0"
-                  c
+                  onChange={handleForm}
                   required
                 />
               </div>
@@ -178,13 +226,25 @@ const AddCustomer = () => {
                 />
               </div>
               <div className="form-right-side">
-                <label>Personal Training : {"  "}</label>
+                <label>Membership Type : {"  "}</label>
                 <select name="pt" id="pt" onChange={handleForm}>
                   <option value="" disabled selected>
                     Select an option
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <optgroup label="Hardcore">
+                    <option value="1MH">1 Month</option>
+                    <option value="3MH">3 Months</option>
+                    <option value="6MH">6 Months</option>
+                    <option value="12MH">Annual</option>
+                  </optgroup>
+                  <optgroup label="Hardcore + PT + Cardio">
+                    <option value="3MHPC">3 Months</option>
+                  </optgroup>
+                  <optgroup label="Hardcore + Cardio">
+                    <option value="3MHC">3 Months</option>
+                    <option value="6MHC">6 Months</option>
+                    <option value="12MHC">Annual</option>
+                  </optgroup>
                 </select>
               </div>
             </div>
@@ -205,7 +265,7 @@ const AddCustomer = () => {
                   type="date"
                   id="enddate"
                   name="enddate"
-                  onChange={handleForm}
+                  onClick={handleEnddate}
                   required
                 />
               </div>
