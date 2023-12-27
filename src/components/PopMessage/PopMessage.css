@@ -2,19 +2,25 @@
 .Pop-Body {
     border-radius: 10px;
     position: fixed;
-    background-color: #ffffff;
-    height: 200px;
-    width: 400px auto+50px;
+    background-color: #242933;
+    height: 300px;
+    width: 400px;
     z-index: 6;
-    left: 50%; /* Horizontal centering */
-    top: 50%; /* Vertical centering */
+    left: 52%; /* Horizontal centering */
+    top: 45%; /* Vertical centering */
     transform: translate(-50%, -50%); /* Centering using translation */
+    /* box-shadow: 9px 9px 20px 4px #97898942; */
     box-shadow: 9px 9px 20px 4px #97898942;
     text-align: center;
     padding-top: 3rem;
     box-sizing: border-box;
-    color: black;
     padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
   
 .Pop-Body>button{

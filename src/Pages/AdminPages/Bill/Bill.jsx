@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./Bill.css";
-import Logo2 from "../../../assets/logo2_black.png";
+// import Logo2 from "../../../assets/logo2_black.png";
+import Logo2 from "../../../assets/another logo.jpg";
 
 const Bill = () => {
   // Call useParams as a function to get the parameters
-  // const { userData, formData } = useParams();
+  const { userData, formData } = useParams();
 
   // Decode the URL-encoded JSON strings
   // const decodedUserData = JSON.parse(decodeURIComponent(userData));
