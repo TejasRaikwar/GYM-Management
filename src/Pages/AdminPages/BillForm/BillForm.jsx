@@ -74,6 +74,8 @@ const BillForm = () => {
       [name]: value,
     });
   };
+
+  
   const handleUpdate = async (e) => {
     e.preventDefault();
     console.log(form);
