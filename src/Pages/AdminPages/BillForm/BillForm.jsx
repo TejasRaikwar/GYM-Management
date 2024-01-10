@@ -197,7 +197,7 @@ const BillForm = () => {
                     <input
                       type="date"
                       id="start-date"
-                      name="start-date"
+                      name="startDate"
                       onChange={handleForm}
                     />
                   </div>

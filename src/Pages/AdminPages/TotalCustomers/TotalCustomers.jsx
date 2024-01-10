@@ -107,8 +107,8 @@ const TotalCustomers = () => {
           <h1>Are you sure?</h1>
           <br />
           <br />
-          <button onClick={handleDeletePop}>Yes</button>
-          <button onClick={() => setSeen(false)}>No</button>
+          <button className="orange-button" onClick={handleDeletePop}>Yes</button>
+          <button className="orange-button" onClick={() => setSeen(false)}>No</button>
         </div>
       ) : null}
       <div className="total-customer-table">
