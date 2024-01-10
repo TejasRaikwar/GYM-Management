@@ -1,21 +1,27 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Bill.css";
-// import Logo2 from "../../../assets/logo2_black.png";
 import Logo2 from "../../../assets/another logo.jpg";
+import { useEffect } from "react";
 
 const Bill = () => {
-  // Call useParams as a function to get the parameters
-  const { userData, formData } = useParams();
 
-  // Decode the URL-encoded JSON strings
-  // const decodedUserData = JSON.parse(decodeURIComponent(userData));
-  // const decodedFormData = JSON.parse(decodeURIComponent(formData));
+  const userDataString = localStorage.getItem("userData");
+  const formDataString = localStorage.getItem("formData");
 
-  // Handle the decoded data as needed
-  // console.log("Decoded User Data:", decodedUserData);
-  // console.log("Decoded Form Data:", decodedFormData);
-//
+  // Convert the stringified JSON back to objects
+  const userInfo = JSON.parse(userDataString);
+  const form = JSON.parse(formDataString);
+  
+  // Clear the data from localStorage once retrieved
+  // useEffect(() => {
+  //   localStorage.removeItem("userData");
+  //   localStorage.removeItem("formData");
+  // }, []);
+console.log(userInfo);
+console.log(form);
+
+
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
   const id = localStorage.getItem("id");
@@ -59,8 +65,8 @@ const Bill = () => {
 
           {/* Client Details */}
           <section className="client-details">
-            <h2>Cleint`s Name</h2>
-            <p>Client`s Addess</p>
+            <h2>{userInfo.Name}</h2>
+            <p>{userInfo.Address}</p>
           </section>
           {/* End of Client Details */}
 

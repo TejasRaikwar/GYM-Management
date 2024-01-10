@@ -1,15 +1,17 @@
 import React from "react";
 import "./BillForm.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BillForm = () => {
   const navigate = useNavigate();
-  let userInfo;
   // form switch
   const [seen, setSeen] = useState("false");
   // Part 1 : find user
   const [mobile, setMobile] = useState("");
+  
+  // State for userInfo
+  const [userInfo, setUserInfo] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +50,7 @@ const BillForm = () => {
       );
       if (response.status === 200) {
         const userData = await response.json();
-        userInfo=userData;
+        setUserInfo(userData);
         setSeen(false);
       } else {
         console.error("Error fetching user data:", response.statusText);
@@ -78,15 +80,10 @@ const BillForm = () => {
   
   const handleUpdate = async (e) => {
     e.preventDefault();
-    console.log(form);
-
-    const userDataString = encodeURIComponent(JSON.stringify(userInfo));
-    const formString = encodeURIComponent(JSON.stringify(form));
-    // Construct the query string
-    const queryString = `?userData=${userDataString}&formData=${formString}`;
-
-    // Use the navigate function to go to the /payment route with the query string
-    navigate(`/payment${queryString}`);
+    // Store data in localStorage without encoding
+    localStorage.setItem("userData", JSON.stringify(userInfo));
+    localStorage.setItem("formData", JSON.stringify(form));
+    navigate("/payment");
   };
 
   const handleEnddate = () => {

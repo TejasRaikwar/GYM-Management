@@ -6,13 +6,13 @@
     color:black
 }
 
-table{
+.total-customer-table>.table>table{
     color: whitesmoke;
     width: 97%;
     background-color:#363D42;
     text-align: center;
 }
-td{
+.total-customer-table>.table>table>tbody>tr>td{
     color: rgb(226, 212, 212);
     padding: 10px;
     border-bottom: 2px solid rgb(83, 80, 80);
@@ -20,7 +20,7 @@ td{
     height: auto;
     text-wrap: wrap;
 }
-th{
+.total-customer-table>.table>table>thead>tr>th{
     height: 2.3rem;
     /* padding: 0; */
     font-size: 1.2rem;
