@@ -3,7 +3,9 @@
     right: 3rem;
     top: 1rem;
     height: 3rem;
+    overflow: hidden;
     }
+
 div>button{
     margin-left: 1rem;
     padding: 10px;
@@ -12,4 +14,14 @@ div>button{
     font-size:medium;
     font-weight: bold;
     border: none;
+}
+.usersitelogo{
+    height: 45px;
+    width:auto;
+    mix-blend-mode:color-burn;
+}
+@media (max-width: 768px) {
+    .admin-topbar{
+        right: 1rem;
+        }
 }
