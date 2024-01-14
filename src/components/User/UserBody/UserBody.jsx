@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import "./UserBody.css";
 import personIcon from "../../../assets/personIcon.png";
 
@@ -8,7 +8,7 @@ const UserBody = () => {
   const [user, setUser] = useState();
   const data = JSON.parse(userData);
 
-  // Name Element
+  // Name Element ---- calculate window width
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -28,10 +28,7 @@ const UserBody = () => {
       return <h1>Name : {data.Name}</h1>;
     }
   }
-
   // --- End name element
-
-
 
   return (
     <div className="user-backgroud">
@@ -42,6 +39,7 @@ const UserBody = () => {
           <h3>{data.Address}</h3>
         </div>
       </div>
+
       <div className="user-body1">
         <div className="user-data" >
           <p>Personal Details : </p>
@@ -84,16 +82,33 @@ const UserBody = () => {
           </div>
         </div>
       </div>
-      <div className="fs-section">
-        <label htmlFor="userFeedback">Feedback : </label>
-      <div className="user-feedback">
-        <textarea name="" id="userFeedback" cols="30" rows="10"></textarea>
+
+      <div className="user-body2">
+        <div className="review-sec" >
+          <p>Review : </p>
+          <div className="rs-internal-div">
+            <input
+              type="text"
+              name="userReview"
+              id="userReview"
+              placeholder="Give your Review here"
+            />
+            <button style={{marginLeft:"5px"}} className="user-submit-btn"> submit </button>
+          </div>
+        </div>
+        <div className="feedback-sec">
+          <p>Feedback:</p>
+          <div className="rs-internal-div">
+            <input type="text"
+              name="userFeedback"
+              id="userFeedback"
+              placeholder="Give your Feedback here"
+            />
+            <button style={{marginLeft:"5px"}} className="user-submit-btn"> submit </button>
+          </div>
+        </div>
       </div>
-        <label htmlFor="userreview">review : </label>
-      <div className="user-review">
-        <textarea name="" id="userreview" cols="30" rows="10"></textarea>
-      </div>
-      </div>
+
     </div>
   );
 };

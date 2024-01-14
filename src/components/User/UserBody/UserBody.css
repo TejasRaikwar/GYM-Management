@@ -49,18 +49,21 @@
         /* Set 3 columns with 
         10px gap 
     } */
-    .user-body1 {
+    .user-body1,
+    .user-body2 {
         margin-top: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
     }
-    .user-data {
-        color: white;
+    .user-data,
+    .other-details,
+    .review-sec,
+    .feedback-sec {
         width: 97% !important;
     }
-    .other-details {
-        width: 97% !important;
+    .three{
+        width: 300px;
     }
 }
 
@@ -72,7 +75,6 @@
     }
 
 }
-
 
 /* choosing a color */
 .bgcolor {
@@ -90,7 +92,7 @@
     width: 100px;
     margin-right: 2rem;
 }
-.user-body1 {
+.user-body1,.user-body2 {
     margin-top: 1rem;
     display: flex;
     gap: 1.5rem;
@@ -98,45 +100,40 @@
     /* padding: 0 2rem 0 2rem; */
 }
 
-.user-data {
-    /* background-color: red; */
+.user-data, .review-sec {
     height: fit-content;
     width: 50%;
     border-radius: 10px;
-    /* padding: 0.5rem; */
     padding: 0.5rem;
 }
-.internal-div{
+.internal-div,.rs-internal-div{
     margin-top: 10px;
-    /* border: 1px solid black; */
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     background-color: rgb(212, 231, 244);
 
-    /* background-color: rgb(241, 240, 238); */
 }
 .user-data>p{
     flex: unset;
 }
 
-.other-details {
-    /* background-color: green; */
+.other-details,.feedback-sec {
     width: 50%;
     border-radius: 10px;
     padding: 0.5rem;
 }
+.rs-internal-div{
+    padding: 20px 10px 20px 10px;
+}
 
-.fs-section{
-    display: flex;
+#userReview,#userFeedback{
+    border: 1px solid rgb(146, 146, 150);
+    border-radius: 5px;
+    overflow-y:auto;
+    overflow-x: scroll;
 }
-.user-feedback{
-    
-}
-.user-feedback textarea{
-    background: transparent;
-}
-.user-review{
-
+.user-submit-btn{
+    width: 110px;
 }
