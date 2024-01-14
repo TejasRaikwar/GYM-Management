@@ -78,7 +78,7 @@
 
 /* choosing a color */
 .bgcolor {
-    /* background-color: rgba(9, 108, 180, 0.66); */
+    /* background-color: rgb(9, 109, 180); */
     /* background-color: #d4e7f4; */
     background: linear-gradient(-110deg, #d4e7f4,#1e9ef4a9);
 
