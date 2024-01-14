@@ -42,7 +42,7 @@ const UserBody = () => {
 
       <div className="user-body1">
         <div className="user-data" >
-          <p>Personal Details : </p>
+          <p>Personal Details: </p>
           <div className="internal-div">
             <div className="three box">
               <h3>Date of Birth : {new Date(data.DOB).toLocaleDateString()}</h3>
@@ -85,7 +85,7 @@ const UserBody = () => {
 
       <div className="user-body2">
         <div className="review-sec" >
-          <p>Review : </p>
+          <p>Review: </p>
           <div className="rs-internal-div">
             <input
               type="text"

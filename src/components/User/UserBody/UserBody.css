@@ -1,10 +1,8 @@
 .user-backgroud {
-    /* color: white; */
     padding: 1rem;
 }
 
 .user-body {
-    /* border: 2px solid white; */
     height: fit-content;
     padding: 10px;
     display: flex;
@@ -26,15 +24,13 @@
 .box {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 48%;    
-    /* width: calc(25% - 10px);     */
     height: 10vh;
     margin-bottom: 10px;
     box-sizing: border-box;
     padding: 1rem;
-    /* background-color: red; */
     display: flex;
     align-items: center;
-
+    
 }
 
 .one {
@@ -44,11 +40,6 @@
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-    /* .box {
-        width: calc(33.3333% - 10px);
-        /* Set 3 columns with 
-        10px gap 
-    } */
     .user-body1,
     .user-body2 {
         margin-top: 1rem;
@@ -67,24 +58,19 @@
     }
 }
 
-/* Media query for even smaller screens */
+
 @media (max-width: 576px) {
     .box {
         width: calc(50% - 10px);
-        /* Set 2 columns with 10px gap */
     }
 
 }
 
 /* choosing a color */
 .bgcolor {
-    /* background-color: rgb(9, 109, 180); */
-    /* background-color: #d4e7f4; */
     background: linear-gradient(-110deg, #d4e7f4,#1e9ef4a9);
-
     display: flex;
-    align-items: center;
-    
+    align-items: center; 
 }
 
 .person-icon{
@@ -109,7 +95,6 @@
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
     background-color: rgb(212, 231, 244);
 
 }
