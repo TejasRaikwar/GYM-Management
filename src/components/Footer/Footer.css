@@ -26,20 +26,3 @@
 .logo-f>img{
 width: 10rem;
 }
-/* 
- .blur-f-1{
-    bottom: 3rem;
-    right: 15%;
-    width: 26rem;
-    height: 12rem;
-    filter: blur(40rem);
-    background: rgba(255, 0, 0, 0.5) ; 
-    } 
-.blur-f-2{
-    bottom: 3rem;
-    left: 15%;
-    width: 30rem;
-    height: 15rem;
-    filter: blur(60rem);
-    background:linear-gradient(20deg,rgba(255, 115, 0, 0.363))
-} */

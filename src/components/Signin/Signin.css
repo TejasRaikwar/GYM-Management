@@ -49,14 +49,13 @@ input{
     outline: 0;
     padding: 18px 15px;
 }
-/*  */
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     appearance: none;
-    margin: 0; /* Optional: You can also set margin to 0 to remove any spacing */
+    margin: 0;
 }
-/*  */
 
 .container button[type="submit"] {
     margin-top: 20px;
@@ -75,7 +74,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 input::placeholder { 
     color:var(--appColor);
-  } */
+  }
 
 .container button[type="button"] {
     margin-top: 20px;
