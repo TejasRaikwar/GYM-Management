@@ -36,10 +36,9 @@ const UserBody = () => {
         <img src={personIcon} alt="person-logo" className="person-icon" />
         <div className="user-name-address" >
           {getNameElement()}
-          <h3>{data.Address}</h3>
+          <h3>Address: {data.Address}</h3>
         </div>
       </div>
-
       <div className="user-body1">
         <div className="user-data" >
           <p>Personal Details: </p>
@@ -82,7 +81,6 @@ const UserBody = () => {
           </div>
         </div>
       </div>
-
       <div className="user-body2">
         <div className="review-sec" >
           <p>Review: </p>
@@ -108,7 +106,6 @@ const UserBody = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
