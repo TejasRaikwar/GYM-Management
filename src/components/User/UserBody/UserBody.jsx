@@ -69,15 +69,32 @@ const UserBody = () => {
   const handleFeedbackSubmit = async() =>{
     try{
       const userFeedback = document.getElementById("userFeedback").value;
-
       if (!userFeedback) {
         alert("Please provide a Feedback before submitting.");
         return;
       }
+      const response = await fetch("http://localhost:8080/saveFeedback",{
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Name : data.Name,
+          Feedback: userFeedback,
+        }),
+      });
+
+      if(response.status === 200){
+        alert(" Feedback submitted successfully.");
+      }
+      else{
+        alert("Failed to saved feedback, please try again.");
+      }
 
     }
-    catch{
-      
+    catch(error){
+      console.log("Error saving feedback:",error);
+      alert("An error occured while saving the feedback")
     }
   }
   return (

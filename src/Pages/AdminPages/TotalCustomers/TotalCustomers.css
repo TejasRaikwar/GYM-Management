@@ -21,8 +21,7 @@
     text-wrap: wrap;
 }
 .total-customer-table>.table>table>thead>tr>th{
-    height: 2.3rem;
-    /* padding: 0; */
+    height: 2.1rem;
     font-size: 1.2rem;
     background-color: rgb(228, 96, 14);
 }

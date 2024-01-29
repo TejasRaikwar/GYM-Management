@@ -1,0 +1,17 @@
+.review-container{
+    margin: 15px;
+    overflow-x: auto;
+    width: 100%;
+    font-size: 18px;
+}
+.review-container table{
+    color: whitesmoke;
+    width: 97%;
+    background-color:#363D42;
+    text-align: center;
+}
+.review-container thead{
+        height: 2.1rem;
+        font-size: 1.2rem;
+        background-color: rgb(228, 96, 14);
+}

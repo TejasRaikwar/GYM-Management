@@ -207,7 +207,7 @@ server.post("/findMember/:mobile",async (req, res) => {
 server.post("/saveReview", async (req, res) => {
     try {
       const { Name, Review } = req.body;
-      
+
       const newReview = new UserReviews({
         Name: Name,
         Review: Review,
@@ -228,8 +228,6 @@ server.get("/getReviews",async(req,res) =>{
     res.json(reviews)
 })
 
-
-
 // Save Feedback
 server.post("/saveFeedback", async (req, res) => {
     try {
@@ -248,6 +246,12 @@ server.post("/saveFeedback", async (req, res) => {
       res.status(500).json({ error: "Internal Server Error", errorMessage: error.message });
     }
   });
+
+// get all Feedbacks 
+server.get("/getFeedbacks",async (req,res) => {
+    const feedbacks = await UserFeedbacks.find({});
+    res.json(feedbacks);
+})
 
 // server started on port
 server.listen(process.env.PORT,()=>{
