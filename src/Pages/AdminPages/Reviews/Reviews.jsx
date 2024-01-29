@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Reviews.css'
+import DeleteIcon from "@mui/icons-material/Delete";
 const Reviews = () => {
   //get Reviews
   const [reviews, setReviews] = useState([]);
@@ -32,7 +33,7 @@ const Reviews = () => {
                   <td>{index+1}</td>
                   <td>{reviews[index].Name}</td>
                   <td>{reviews[index].Review}</td>
-                  <td>-</td>
+                  <td><DeleteIcon/></td>
                 </tr>
               </tbody>
             ))}

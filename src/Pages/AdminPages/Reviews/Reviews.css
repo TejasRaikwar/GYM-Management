@@ -15,3 +15,19 @@
         font-size: 1.2rem;
         background-color: rgb(228, 96, 14);
 }
+
+.review-container tr>td{
+    color: rgb(226, 212, 212);
+    padding: 6px;
+    border-bottom: 2px solid rgb(83, 80, 80);
+    max-width: 344px;
+    height: auto;
+    text-wrap: wrap;
+}
+
+.review-container>table>thead>tr>:nth-child(1){
+    width: 7rem;
+}
+.review-container>table>thead>tr>:last-child{
+    width: 7rem;
+}

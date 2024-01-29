@@ -4,8 +4,9 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ReviewsIcon from '@mui/icons-material/Reviews';
-import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+
 const SidebarData = [
     {
         title:"Dashboard",
@@ -40,7 +41,7 @@ const SidebarData = [
     },
     {
         title:"Suggestions",
-        icon:<TipsAndUpdatesIcon/>,
+        icon:<FeedbackIcon/>,
         link:"/app/suggestions"
     }
 
