@@ -30,6 +30,56 @@ const UserBody = () => {
   }
   // --- End name element
 
+
+
+
+  // -----------------  handlings  ----------------
+  const handleReviewSubmit = async () => {
+    try {
+      const userReview = document.getElementById("userReview").value;
+
+      if (!userReview) {
+        alert("Please provide a review before submitting.");
+        return;
+      }
+      const response = await fetch("http://localhost:8080/saveReview", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Name: data.Name,
+          Review: userReview,
+        }),
+      });
+
+      if (response.status === 200) {
+        alert("Review saved successfully.");
+      }
+      else {
+        alert("Failed to saved review, Please try again.");
+      }
+    } catch (error) {
+      console.error("Error saving review:", error);
+      alert("An error occurred while saving the review.");
+    }
+  }
+  
+// ----------------- Feedback ----------------
+  const handleFeedbackSubmit = async() =>{
+    try{
+      const userFeedback = document.getElementById("userFeedback").value;
+
+      if (!userFeedback) {
+        alert("Please provide a Feedback before submitting.");
+        return;
+      }
+
+    }
+    catch{
+      
+    }
+  }
   return (
     <div className="user-backgroud">
       <div className="one name-box bgcolor">
@@ -91,7 +141,13 @@ const UserBody = () => {
               id="userReview"
               placeholder="Give your Review here"
             />
-            <button style={{marginLeft:"5px"}} className="user-submit-btn"> submit </button>
+            <button 
+              style={{marginLeft:"5px"}} 
+              className="user-submit-btn"
+              onClick={handleReviewSubmit}
+            >
+              submit 
+            </button>
           </div>
         </div>
         <div className="feedback-sec">
@@ -102,7 +158,13 @@ const UserBody = () => {
               id="userFeedback"
               placeholder="Give your Feedback here"
             />
-            <button style={{marginLeft:"5px"}} className="user-submit-btn"> submit </button>
+            <button
+              style={{ marginLeft: "5px" }}
+              className="user-submit-btn"
+              onClick={handleFeedbackSubmit}
+            >
+              submit 
+            </button>
           </div>
         </div>
       </div>

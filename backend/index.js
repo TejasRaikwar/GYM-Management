@@ -36,12 +36,23 @@ const userSchema = new mongoose.Schema({
     Password:String,
 });
 
-const User = mongoose.model('User', userSchema);
+const userReview = new mongoose.Schema({
+    Name : String,
+    Review: String,
+});
+const userFeedback = new mongoose.Schema({
+    Name : String,
+    Feedback: String,
+});
 
+const User = mongoose.model('User', userSchema);
+const UserReviews = mongoose.model('UserReviews',userReview);
+const UserFeedbacks = mongoose.model('UserFeedbacks',userFeedback);
 
 const corsOptions = { 
     credentials: true,
   };
+
 server.use(cors(corsOptions));
 server.use(bodyParser.json());
 server.use(cookieParser());
@@ -82,7 +93,7 @@ server.post('/addMember', async (req, res) => {
 // CRUD -  Read 
 // http://localhost:8080/getMembers
 server.get('/getMembers',async (req,res)=>{
-    const docs = await User.find({});
+    const docs = await User.find({ role: { $ne: 'admin' } });
     res.json(docs)
 })
 
@@ -190,7 +201,54 @@ server.post("/findMember/:mobile",async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 })
+
+
+// Save a review
+server.post("/saveReview", async (req, res) => {
+    try {
+      const { Name, Review } = req.body;
+      
+      const newReview = new UserReviews({
+        Name: Name,
+        Review: Review,
+      });
   
+      await newReview.save();
+      res.status(200).json({ message: "Review saved successfully" });
+    } catch (error) {
+      console.error("Error saving review:", error);
+      res.status(500).json({ error: "Internal Server Error", errorMessage: error.message });
+    }
+  });
+
+
+// get Reviews
+server.get("/getReviews",async(req,res) =>{
+    const reviews = await UserReviews.find({});
+    res.json(reviews)
+})
+
+
+
+// Save Feedback
+server.post("/saveFeedback", async (req, res) => {
+    try {
+      const { Name, Feedback } = req.body;
+  
+      const newFeedback = new UserFeedbacks({
+        Name: Name,
+        Feedback: Feedback,
+      });
+  
+      await newFeedback.save();
+      res.status(200).json({ message: "Feedback saved successfully" });
+
+    } catch (error) {
+      console.error("Error saving Feedback:", error);
+      res.status(500).json({ error: "Internal Server Error", errorMessage: error.message });
+    }
+  });
+
 // server started on port
 server.listen(process.env.PORT,()=>{
     console.log('server started');
