@@ -20,7 +20,7 @@
 }
 .plans{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
@@ -39,8 +39,8 @@
     transform: scale(1.1);
 }
 .plan:nth-child(4){
-    margin: 0 30% 0 30% ;
-    flex: none;
+    /* margin: 0 30% 0 30% ; */
+    /* flex: none; */
     background: var(--planCard);
     transform: scale(1.1);
 }
@@ -92,6 +92,9 @@ color: orange;}
 @media screen and (max-width:768px) {
     .plans{
         flex-direction: column;
+    }
+    .plan{
+        width: auto;
     }
     .plan:nth-child(2){
         transform: none;

@@ -2,8 +2,12 @@
     height: 100%;
     position:relative;
     padding: 1rem;
-     
+
+    /* after  */
+    background-color: rgb(80, 80, 80);
+    background-size: cover;
 }
 .user-content{
     margin-top: 1rem;
 }
+

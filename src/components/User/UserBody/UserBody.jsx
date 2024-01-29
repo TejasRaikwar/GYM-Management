@@ -40,7 +40,7 @@ const UserBody = () => {
         </div>
       </div>
       <div className="user-body1">
-        <div className="user-data" >
+        <div className="user-data ">
           <p>Personal Details: </p>
           <div className="internal-div">
             <div className="three box">

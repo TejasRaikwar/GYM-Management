@@ -18,7 +18,8 @@ div>button{
 .usersitelogo{
     height: 45px;
     width:auto;
-    mix-blend-mode:color-burn;
+    
+    /* mix-blend-mode:color-burn; */
 }
 @media (max-width: 768px) {
     .admin-topbar{
