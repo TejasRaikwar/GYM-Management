@@ -50,10 +50,7 @@ const AddCustomer = () => {
       console.log(error);
     }
   };
-  // const handleSubmit = (e) =>{
-  //   e.preventDefault();
-  //   console.log(form);
-  // }
+
   function validateForm() {
     let isValid = true;
     const contact = document.getElementById("mobilenum").value;
@@ -70,21 +67,23 @@ const AddCustomer = () => {
   }
 
   // handle membership type and Date
-  const handleEnddate = () => {
-    const startdateInput = document.getElementById("joindate");
-    const endDateInput = document.getElementById("enddate");
-    endDateInput.value = calculateEndDate(
-      document.getElementById("joindate").value,
-      document.getElementById("pt").value
-    ).toString();
+const handleEnddate = () => {
+  const endDateInput = document.getElementById("enddate");
+  const endDateValue = calculateEndDate(
+    document.getElementById("joindate").value,
+    document.getElementById("pt").value
+  ).toString();
+  
+  endDateInput.value = endDateValue;
 
-    handleForm({
-      target: {
-        name: "endDate",
-        value: endDateInput.value,
-      },
-    });
-  };
+  handleForm({
+    target: {
+      name: "enddate", 
+      value: endDateValue,
+    },
+  });
+};
+
 
   const calculateEndDate = (startDate, membershipType) => {
     const start = new Date(startDate);
