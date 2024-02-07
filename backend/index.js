@@ -14,6 +14,7 @@ main().catch(err => console.log(err));
 
 async function main() {
   await mongoose.connect(process.env.MONGO_URI);
+//   await mongoose.connect("mongodb+srv://royaltyfitness:Royalty@gymdata.ptratk2.mongodb.net/?retryWrites=true&w=majority");
   console.log('db connected');
 }
 
@@ -228,6 +229,14 @@ server.get("/getReviews",async(req,res) =>{
     res.json(reviews)
 })
 
+// http://localhost:8080/deleteReview/:id
+server.delete("/deleteReview/:id", async(req,res)=>{
+    const id = req.params.id;
+    const data = await UserReviews.deleteOne({_id:id});
+    res.send({success:true, message:"Review Deleted Successfully.",data : data})
+
+})
+
 // Save Feedback
 server.post("/saveFeedback", async (req, res) => {
     try {
@@ -247,10 +256,18 @@ server.post("/saveFeedback", async (req, res) => {
     }
   });
 
-// get all Feedbacks 
+// get all Suggestions
 server.get("/getFeedbacks",async (req,res) => {
     const feedbacks = await UserFeedbacks.find({});
     res.json(feedbacks);
+})
+
+// http://localhost:8080/deleteFeedback/:id
+server.delete("/deleteFeedback/:id", async(req,res)=>{
+    const id = req.params.id;
+    const data = await UserFeedbacks.deleteOne({_id:id});
+    res.send({success:true, message:"Feedback Deleted Successfully.",data : data})
+
 })
 
 // server started on port

@@ -36,6 +36,7 @@ const TotalCustomers = () => {
       getUsers();
     }
   };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -73,23 +74,23 @@ const TotalCustomers = () => {
     setEditSection(true);
     setFormData(users);
   };
-  
+
   // handle delete pop
-  function handleDeletePop(){
+  function handleDeletePop() {
     handleDelete(deleteItemId)
     setSeen(false);
   }
 
-// Search box
+  // Search box
 
   return (
     <>
-    
+
       {popmsg ? (
-      <PopMessage 
-      message={message}
-      handleClose={() => setPopmsg(false)}
-      />) : null}
+        <PopMessage
+          message={message}
+          handleClose={() => setPopmsg(false)}
+        />) : null}
 
 
       {/* Edit Section */}
@@ -113,13 +114,15 @@ const TotalCustomers = () => {
       ) : null}
       <div className="total-customer-table">
         <div className="table">
+          <div style={{width:"95%",textAlign:"right",marginBottom:"3px",fontSize:"1rem"}}>
+          <i style={{color:"white"}}><b>Note: </b>In Mem. type, "M" is used for "Month", "H" for "Hardcore", "P" for "PT", & "C" for "Cardio"</i></div>
           <table>
             <thead>
               <tr>
                 <th>Sr.No.</th>
                 <th>Name</th>
                 <th>Mobile</th>
-                <th>PT</th>
+                <th>Mem. type</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Paid</th>
@@ -172,6 +175,5 @@ const TotalCustomers = () => {
     </>
   );
 };
-
 
 export default TotalCustomers;

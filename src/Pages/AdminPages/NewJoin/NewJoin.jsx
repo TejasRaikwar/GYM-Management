@@ -37,13 +37,15 @@ const NewJoin = () => {
   return (
     <div className="new-joined">
       <h2 style={{textAlign:"center",marginTop:"10px"}}>Members Joined within 7 days</h2><br/>
-      <div className="table">
+      <div className="table" style={{marginLeft:"1.6rem"}}>
+      <div style={{width:"95%",textAlign:"right",marginBottom:"3px",fontSize:"1rem"}}>
+          <i style={{color:"white"}}><b>Note: </b>In Mem. type, "M" is used for "Month", "H" for "Hardcore", "P" for "PT", & "C" for "Cardio"</i></div>
           <table>
             <thead>
               <tr>
                 <th>Sr.No.</th>
                 <th>Name</th>
-                <th>PT</th>
+                <th>Mem. type</th>
                 <th>Join Date</th>
                 <th>End Date</th>
               </tr>

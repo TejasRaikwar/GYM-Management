@@ -47,6 +47,32 @@ const Dashboard = () => {
     setCountPP(countPP);
   },[users]);
   
+  // Reviews Count
+  const [reviews, setReviews] = useState([]);
+  const getReviews = async () => {
+    const response = await fetch("http://localhost:8080/getReviews", {
+      method: "GET",
+    });
+    const data = await response.json();
+    setReviews(data);
+  };
+
+  const [suggestions, setSuggestions] = useState([]);
+
+  const getSuggestions = async () => {
+    const response = await fetch("http://localhost:8080/getFeedbacks", {
+      method: "GET",
+    });
+    const data = await response.json();
+    setSuggestions(data);
+  };
+
+  useEffect(() => {
+    getReviews();
+    getSuggestions();
+  }, []);
+
+
   const dashBoxes = [
     {
       title: "Total Customers",
@@ -70,12 +96,12 @@ const Dashboard = () => {
     },
     {
       title: "Reviews",
-      value: 36,
+      value: reviews.length,
       icon: <ReviewsIcon style={{ fontSize: 40 }} />,
     },
     {
       title: "Suggestions",
-      value: 45,
+      value: suggestions.length,
       icon: <TipsAndUpdatesIcon style={{ fontSize: 40 }} />,
     },
   ];

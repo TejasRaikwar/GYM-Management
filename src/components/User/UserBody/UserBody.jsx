@@ -168,12 +168,12 @@ const UserBody = () => {
           </div>
         </div>
         <div className="feedback-sec">
-          <p>Feedback:</p>
+          <p>Suggestion:</p>
           <div className="rs-internal-div">
             <input type="text"
               name="userFeedback"
               id="userFeedback"
-              placeholder="Give your Feedback here"
+              placeholder="Give your suggestion here"
             />
             <button
               style={{ marginLeft: "5px" }}
