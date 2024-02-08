@@ -270,6 +270,35 @@ server.delete("/deleteFeedback/:id", async(req,res)=>{
 
 })
 
+
+//  Notifications : 
+// http://localhost:8080/getMembersNearToEndDate
+server.get("/getMembersNearToEndDate",async(req,res)=> {
+    try{
+        const currentDate = new Date();
+        const thresholdDate = new Date();
+        thresholdDate.setDate(thresholdDate.getDate()+7);
+
+        // Fetch members whose membership is about to end
+        const members = await User.find({
+            role:{$ne:'admin'}, // Exclude admin
+            EndDate:{$gte : currentDate, $lte: thresholdDate} // EndDate within 7 days
+        })
+        res.json(members);
+    }catch(error){
+        console.log("Error fetching members:"+error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+})
+
+
+
+
+
+
+
+
+
 // server started on port
 server.listen(process.env.PORT,()=>{
     console.log('server started');
