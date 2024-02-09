@@ -291,14 +291,6 @@ server.get("/getMembersNearToEndDate",async(req,res)=> {
     }
 })
 
-
-
-
-
-
-
-
-
 // server started on port
 server.listen(process.env.PORT,()=>{
     console.log('server started');

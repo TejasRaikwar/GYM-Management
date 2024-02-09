@@ -24,8 +24,6 @@ const Notifications = () => {
   }, []);
 
   // function to display notifications
-  // Function to display notifications for members whose membership is about to end
-  // Function to display notifications for members whose membership is about to end
   const displayNotifications = () => {
     const alreadyNotifiedMembers = {};
 
