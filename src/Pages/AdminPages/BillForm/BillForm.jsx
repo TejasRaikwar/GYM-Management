@@ -62,7 +62,6 @@ const BillForm = () => {
   };
 
   // End Of 1st Part
-
   // Part 2 : Bill Data
   const [form, setForm] = useState({});
 
