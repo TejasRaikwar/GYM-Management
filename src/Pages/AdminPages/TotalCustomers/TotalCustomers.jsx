@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import "./TotalCustomers.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateForm from "../UpdateForm/UpdateForm";
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import PopMessage from "../../../components/PopMessage/PopMessage";
 
 const TotalCustomers = () => {
@@ -36,7 +36,7 @@ const TotalCustomers = () => {
       method: "DELETE",
     });
     if (response.status === 200) {
-      setDeleteItemId(null)
+      setDeleteItemId(null);
       getUsers();
     }
   };
@@ -55,11 +55,11 @@ const TotalCustomers = () => {
         }
       );
       if (response.status === 200) {
-        setMessage("Data Updated")
-        setPopmsg(true)
+        setMessage("Data Updated");
+        setPopmsg(true);
         setEditSection(false);
         getUsers();
-        console.log(formData)
+        console.log(formData);
       }
     } catch (err) {
       console.error(err.message);
@@ -82,17 +82,19 @@ const TotalCustomers = () => {
 
   // handle delete pop
   function handleDeletePop() {
-    handleDelete(deleteItemId)
+    handleDelete(deleteItemId);
     setSeen(false);
   }
 
   // Search box
   const searchBoxFun = () => {
-    const searchText = document.getElementsByName("searchMember")[0].value.toLowerCase();
+    const searchText = document
+      .getElementsByName("searchMember")[0]
+      .value.toLowerCase();
     if (searchText.trim() === "") {
       setFilteredUsers(users); // Reset to all users if search is empty
     } else {
-      const filtered = users.filter(user =>
+      const filtered = users.filter((user) =>
         user.Name.toLowerCase().includes(searchText)
       );
       setFilteredUsers(filtered);
@@ -168,36 +170,44 @@ const TotalCustomers = () => {
                 <th style={{ width: "8rem" }}>Action</th>
               </tr>
             </thead>
-            <tbody>
-              {filteredUsers.map((key, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{key.Name}</td>
-                  <td>{key.Mobile}</td>
-                  <td>{key.PT}</td>
-                  <td>{new Date(key.JoinDate).toLocaleDateString()}</td>
-                  <td>{new Date(key.EndDate).toLocaleDateString()}</td>
-                  <td>{key.FeesPaid}</td>
-                  <td>{key.FeesBalance}</td>
-                  <td>
-                    <div className="icon-holder">
-                      {/* <UploadIcon /> */}
-                      <VisibilityIcon
-                        onClick={() => {
-                          handleEdit(key);
-                        }}
-                      />
-                      <DeleteIcon
-                        onClick={() => {
-                          setSeen(true);
-                          setDeleteItemId(key._id);
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            {filteredUsers[0] ? (
+              filteredUsers.map((key, index) => (
+                <tbody>
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{key.Name}</td>
+                    <td>{key.Mobile}</td>
+                    <td>{key.PT}</td>
+                    <td>{new Date(key.JoinDate).toLocaleDateString()}</td>
+                    <td>{new Date(key.EndDate).toLocaleDateString()}</td>
+                    <td>{key.FeesPaid}</td>
+                    <td>{key.FeesBalance}</td>
+                    <td>
+                      <div className="icon-holder">
+                        {/* <UploadIcon /> */}
+                        <VisibilityIcon
+                          onClick={() => {
+                            handleEdit(key);
+                          }}
+                        />
+                        <DeleteIcon
+                          onClick={() => {
+                            setSeen(true);
+                            setDeleteItemId(key._id);
+                          }}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              ))
+            ) : (
+              <td colSpan="9">
+                <p style={{ margin: "2rem", padding: "1rem" }}>
+                  There are no members, please add  a new member!
+                </p>
+              </td>
+            )}
           </table>
         </div>
       </div>
