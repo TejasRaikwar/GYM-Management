@@ -1,0 +1,30 @@
+.membership-at-end{
+    margin: 15px;
+    overflow-x: auto;
+    width: 100%;
+    font-size: 18px;
+}
+
+.membership-at-end{
+    margin: 0;
+}
+.membership-at-end table{
+    color: whitesmoke;
+    width: 97%;
+    background-color:#363D42;
+    text-align: center;
+}
+
+.membership-at-end table>thead>tr>th{
+    height: 2.1rem;
+    font-size: 1.1rem;
+    background-color: rgb(228, 96, 14);
+}
+.membership-at-end table>tbody>tr>td{
+    color: rgb(226, 212, 212);
+    padding: 9px;
+    border-bottom: 2px solid rgb(83, 80, 80);
+    max-width: 344px;
+    height: auto;
+    text-wrap: wrap;
+}

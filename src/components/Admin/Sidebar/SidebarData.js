@@ -1,5 +1,6 @@
 import React from 'react'
-import PersonIcon from '@mui/icons-material/Person';
+import GroupsIcon from '@mui/icons-material/Groups';
+// import PersonIcon from '@mui/icons-material/Person';
 import PaymentIcon from '@mui/icons-material/Payment';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -15,7 +16,7 @@ const SidebarData = [
     },
     {
         title:"Total Customers",
-        icon:<PersonIcon/>,
+        icon:<GroupsIcon/>,
         link:"/app/totalcustomers"
     },
     {
@@ -30,7 +31,7 @@ const SidebarData = [
     },
    
     {
-        title:"Notifications",
+        title:"Membership at End",
         icon:<NotificationsIcon/>,
         link:"/app/notifications"
     },

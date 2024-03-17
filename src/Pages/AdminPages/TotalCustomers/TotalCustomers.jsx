@@ -15,13 +15,17 @@ const TotalCustomers = () => {
 
   // getUsers    -- show members
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+
   const getUsers = async () => {
     const response = await fetch("http://localhost:8080/getMembers", {
       method: "GET",
     });
     const data = await response.json();
     setUsers(data);
+    setFilteredUsers(data); // Set filteredUsers initially to all users
   };
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -61,6 +65,7 @@ const TotalCustomers = () => {
       console.error(err.message);
     }
   };
+
   // HandleEditForm
   const [formData, setFormData] = useState({});
   const handleEditForm = (e) => {
@@ -82,16 +87,23 @@ const TotalCustomers = () => {
   }
 
   // Search box
+  const searchBoxFun = () => {
+    const searchText = document.getElementsByName("searchMember")[0].value.toLowerCase();
+    if (searchText.trim() === "") {
+      setFilteredUsers(users); // Reset to all users if search is empty
+    } else {
+      const filtered = users.filter(user =>
+        user.Name.toLowerCase().includes(searchText)
+      );
+      setFilteredUsers(filtered);
+    }
+  };
 
   return (
     <>
-
       {popmsg ? (
-        <PopMessage
-          message={message}
-          handleClose={() => setPopmsg(false)}
-        />) : null}
-
+        <PopMessage message={message} handleClose={() => setPopmsg(false)} />
+      ) : null}
 
       {/* Edit Section */}
       {editSection && (
@@ -108,14 +120,40 @@ const TotalCustomers = () => {
           <h1>Are you sure?</h1>
           <br />
           <br />
-          <button className="orange-button" onClick={handleDeletePop}>Yes</button>
-          <button className="orange-button" onClick={() => setSeen(false)}>No</button>
+          <button className="orange-button" onClick={handleDeletePop}>
+            Yes
+          </button>
+          <button className="orange-button" onClick={() => setSeen(false)}>
+            No
+          </button>
         </div>
       ) : null}
       <div className="total-customer-table">
         <div className="table">
-          <div style={{width:"95%",textAlign:"right",marginBottom:"3px",fontSize:"1rem"}}>
-          <i style={{color:"white"}}><b>Note: </b>In Mem. type, "M" is used for "Month", "H" for "Hardcore", "P" for "PT", & "C" for "Cardio"</i></div>
+          <div
+            style={{
+              width: "95%",
+              textAlign: "right",
+              marginBottom: "3px",
+              fontSize: "1rem",
+            }}
+          >
+            <i style={{ color: "white" }}>
+              <b>Note: </b>
+              In Mem. type, "M" is used for "Month", "H" for "Hardcore", "P" for
+              "PT", & "C" for "Cardio"
+            </i>
+          </div>
+          <div className="searchBox">
+            <label className="search-box-label">Search : </label>
+            <input
+              type="search"
+              name="searchMember"
+              id="searchMember"
+              placeholder="Search here"
+              onChange={searchBoxFun}
+            />
+          </div>
           <table>
             <thead>
               <tr>
@@ -130,45 +168,36 @@ const TotalCustomers = () => {
                 <th style={{ width: "8rem" }}>Action</th>
               </tr>
             </thead>
-            {users[0] ? (
-              users.map((key, index) => (
-                <tbody>
-                  <tr>
-                    <td>{index + 1}</td>
-                    <td>{key.Name}</td>
-                    <td>{key.Mobile}</td>
-                    <td>{key.PT}</td>
-                    <td>{new Date(key.JoinDate).toLocaleDateString()}</td>
-                    <td>{new Date(key.EndDate).toLocaleDateString()}</td>
-                    <td>{key.FeesPaid}</td>
-                    <td>{key.FeesBalance}</td>
-                    <td>
-                      <div className="icon-holder">
-                        {/* <UploadIcon /> */}
-                        <VisibilityIcon
-                          onClick={() => {
-                            handleEdit(key);
-                          }}
-                        />
-                        <DeleteIcon
-                          onClick={() => {
-                            setSeen(true);
-                            setDeleteItemId(key._id);
-                          }}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              ))
-            ) : (
-              <td colSpan="7">
-                <p style={{ margin: "2rem", padding: "1rem" }}>
-                  No Data available please add Members Data from Add Customers
-                  Button above
-                </p>
-              </td>
-            )}
+            <tbody>
+              {filteredUsers.map((key, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{key.Name}</td>
+                  <td>{key.Mobile}</td>
+                  <td>{key.PT}</td>
+                  <td>{new Date(key.JoinDate).toLocaleDateString()}</td>
+                  <td>{new Date(key.EndDate).toLocaleDateString()}</td>
+                  <td>{key.FeesPaid}</td>
+                  <td>{key.FeesBalance}</td>
+                  <td>
+                    <div className="icon-holder">
+                      {/* <UploadIcon /> */}
+                      <VisibilityIcon
+                        onClick={() => {
+                          handleEdit(key);
+                        }}
+                      />
+                      <DeleteIcon
+                        onClick={() => {
+                          setSeen(true);
+                          setDeleteItemId(key._id);
+                        }}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       </div>

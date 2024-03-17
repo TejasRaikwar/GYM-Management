@@ -67,9 +67,31 @@ const Dashboard = () => {
     setSuggestions(data);
   };
 
+  // Membership at End
+  const [members, setMembers] = useState([]);
+  // fetch data from backend
+  const fetchMembers = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/getMembersNearToEndDate",
+        {
+          method: "GET",
+        }
+      );
+      const data = await response.json();
+      setMembers(data);
+      console.log(members);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  // 
+
   useEffect(() => {
     getReviews();
     getSuggestions();
+    fetchMembers();
   }, []);
 
 
@@ -90,8 +112,8 @@ const Dashboard = () => {
       icon: <PaymentIcon style={{ fontSize: 40 }} />,
     },
     {
-      title: "Notifications",
-      value: 63,
+      title: "Membership at End",
+      value: members.length,
       icon: <NotificationsIcon style={{ fontSize: 40 }} />,
     },
     {

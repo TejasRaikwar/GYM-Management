@@ -46,9 +46,11 @@ const PendingPayments = () => {
               </tr>
             </tbody>
             ))):(
-              <>
-                No Data to Display
-              </>
+              <td colSpan="4">
+              <p style={{ margin: "2rem", padding: "1rem" }}>
+                No Pending Payments
+              </p>
+            </td>
             )}
             </table>
     </div>
