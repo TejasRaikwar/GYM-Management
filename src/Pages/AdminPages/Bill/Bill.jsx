@@ -123,8 +123,8 @@ const Bill = () => {
 
             {/* Client Details */}
             <section className="client-details">
-              <h2>{userInfo.Name}</h2>
-              <p>{userInfo.Address}</p>
+              <h2>{userInfo.Name? userInfo.Name : userInfo.name}</h2>
+              <p>{userInfo.Address? userInfo.Address : userInfo.address}</p>
             </section>
             {/* End of Client Details */}
 
@@ -138,9 +138,9 @@ const Bill = () => {
                   <span className="font-bold">Invoice Date: </span>{formattedDate}
                   {/* <span className="font-bold">Invoice Date: </span>{currentDate.toLocaleDateString()} */}
                 </li>
-                <li className="p-1">
+                {/* <li className="p-1">
                   <span className="font-bold">Due Date: </span>05-11-2023
-                </li>
+                </li> */}
               </ul>
             </article>
             {/* End of Date */}

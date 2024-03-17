@@ -19,7 +19,7 @@ const SidebarData = [
         link:"/app/totalcustomers"
     },
     {
-        title:"Newly Joined",
+        title:"New Join",
         icon:<PersonAddIcon/>,
         link:"/app/newjoin"
     },

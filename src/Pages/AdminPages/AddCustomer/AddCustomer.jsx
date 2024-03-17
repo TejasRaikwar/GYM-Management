@@ -2,9 +2,11 @@ import { React, useState } from "react";
 import "./AddCustomer.css";
 import axios from "axios";
 import PopMessage from "../../../components/PopMessage/PopMessage";
-axios.defaults.baseURl = "http://localhost:8080/";
+import { useNavigate } from "react-router-dom";
 
+axios.defaults.baseURl = "http://localhost:8080/";
 const AddCustomer = () => {
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [popmsg, setPopmsg] = useState(false);
   const [form, setForm] = useState({});
@@ -50,7 +52,7 @@ const AddCustomer = () => {
       console.log(error);
     }
   };
-
+/*
   function validateForm() {
     let isValid = true;
     const contact = document.getElementById("mobilenum").value;
@@ -65,6 +67,7 @@ const AddCustomer = () => {
     }
     return isValid;
   }
+*/
 
   // handle membership type and Date
 const handleEnddate = () => {
@@ -120,12 +123,29 @@ const handleEnddate = () => {
     const formattedEndDate = endDate.toISOString().split("T")[0];
     return formattedEndDate;
   };
+
+  const handleClosePopBox = () => {
+    setPopmsg(false);
+    const formData = {
+      membershiptype: form.pt,
+      startDate: form.joindate,
+      endDate: form.enddate,
+      feespaid: form.feespaid
+    };
+    localStorage.setItem("userData", JSON.stringify(form));
+    localStorage.setItem("formData", JSON.stringify(formData));
+    navigate("/payment");
+  }
   // End
 
   return (
     <>
       {popmsg ? (
-        <PopMessage message={message} handleClose={() => setPopmsg(false)} />
+        <PopMessage 
+          message={message} 
+          handleClose={handleClosePopBox} 
+          // handleClose={() => setPopmsg(false)} 
+        />
       ) : null}
       <div className="add-customer-form">
         <h1 style={{ textAlign: "center" }}>Member Registration Form</h1>

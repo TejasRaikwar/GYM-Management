@@ -34,7 +34,7 @@ const Dashboard = () => {
     // Filter the data to include objects with join dates in the specified range
     const filtered = users.filter(item => {
       const joinDate = new Date(item.JoinDate);
-      return joinDate >= sevenDaysAgo && joinDate <= currentDate;
+      return joinDate >= sevenDaysAgo || joinDate > currentDate;
     });
 
     setFilteredData(filtered);

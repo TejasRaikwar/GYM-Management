@@ -1,9 +1,7 @@
 .dash{
     display: flex;
-    /* flex-wrap:wrap; */
     flex-flow: row wrap ;
     justify-content: center;
-
 }
 .dashboard-content{
     padding: 15px;
