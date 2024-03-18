@@ -100,3 +100,23 @@ select{
     align-items: flex-start; /* Align the input and error message to the start */
   }
   
+
+  
+@media (max-width: 1330px) {
+
+    .try-input>.form-left-side {
+        margin: 0;
+    }
+}
+@media (max-width:1265px){
+    .try-input{
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+    #pt{
+        width: 63%;
+    }
+    .try-input>.form-right-side {
+        margin: 1rem 0 1rem 0;
+    }
+}

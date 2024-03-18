@@ -12,3 +12,9 @@ min-height: 100vh;
   color: white;  
   padding-top: 3.4rem;
 }
+
+@media (max-width: 800px) {
+  .main-body{
+    margin-left: 5.5rem;
+  }
+}

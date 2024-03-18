@@ -43,3 +43,17 @@
 .row #title{
     flex: 70%;
 }
+
+
+
+
+
+@media (max-width: 800px) {
+    .sidebar {
+        width: 80px;
+        margin-right: 0;
+    }
+    .sidebar-content>ul>li>#title {
+        display: none;
+    }
+}
