@@ -52,22 +52,6 @@ const AddCustomer = () => {
       console.log(error);
     }
   };
-/*
-  function validateForm() {
-    let isValid = true;
-    const contact = document.getElementById("mobilenum").value;
-    // check Mobile number (10 digits)
-    const contactRegex = /^\d{10}$/;
-    if (!contactRegex.test(contact)) {
-      document.getElementById("phoneError").innerHTML =
-        "Please enter a 10-digit contact number.";
-      isValid = false;
-    } else {
-      document.getElementById("phoneError").innerHTML = "";
-    }
-    return isValid;
-  }
-*/
 
   // handle membership type and Date
 const handleEnddate = () => {
