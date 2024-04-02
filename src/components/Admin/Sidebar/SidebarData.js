@@ -1,6 +1,5 @@
 import React from 'react'
 import GroupsIcon from '@mui/icons-material/Groups';
-// import PersonIcon from '@mui/icons-material/Person';
 import PaymentIcon from '@mui/icons-material/Payment';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import NotificationsIcon from '@mui/icons-material/Notifications';
