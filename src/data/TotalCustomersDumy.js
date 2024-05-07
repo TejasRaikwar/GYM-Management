@@ -260,8 +260,5 @@ export const TotalCustomersDumy = [
         Payment:5452,
         Balance:222,
     },
-    
-
-
   ];
   
