@@ -80,7 +80,6 @@ const Dashboard = () => {
       );
       const data = await response.json();
       setMembers(data);
-      console.log(members);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
