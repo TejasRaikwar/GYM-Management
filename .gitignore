@@ -25,4 +25,4 @@ yarn-error.log*
 
 #backend folder
 /backend/node_modules
-/backend .env
+/backend/.env
